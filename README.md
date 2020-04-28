@@ -1,7 +1,14 @@
 # theses2ES
 batch program indexing theses data into ES
 
-exemple de application.properties : 
+Pour compiler :
+set JAVA_HOME=C:\tele\openjdk-11.0.2_windows-x64_bin\jdk-11.0.2
+c:\tele\apache-maven-3.6.2-bin\apache-maven-3.6.2\bin\mvn clean package
+
+Pour exécuter : 
+c:\tele\openjdk-11.0.2_windows-x64_bin\jdk-11.0.2\bin\java -jar theses2ES-0.0.1-SNAPSHOT.jar
+
+exemple de application.properties à placer dans src/main/resources: 
 ~~~~
 spring.batch.initialize-schema=always
 
