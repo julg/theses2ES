@@ -2,8 +2,7 @@
 batch program indexing theses data into ES
 
 exemple de application.properties : 
-
-# **********************************************************************************************************
+~~~~
 spring.batch.initialize-schema=always
 
 # oracle
@@ -28,5 +27,4 @@ job.chunk=100
 job.throttle=6
 # Limite de la clause where, mettre 0 pour tout prendre
 job.where-limite=2000
-
-# **********************************************************************************************************
+~~~~
