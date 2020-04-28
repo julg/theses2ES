@@ -114,6 +114,30 @@
             </plugin>
         </plugins>
     </build>
+	<distributionManagement>
+		<repository>
+			<id>artifactory-release</id>
+			<url>https://artifactory.v3.abes.fr/artifactory/libs-release-local</url>
+		</repository>
+		<snapshotRepository>
+			<id>artifactory-snapshot</id>
+			<url>https://artifactory.v3.abes.fr/artifactory/libs-snapshot-local</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<repositories>
+		<repository>
+			<id>artifactory-public</id>
+			<name>artifactory-public</name>
+			<url>https://artifactory.v3.abes.fr/artifactory/maven-public/</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>artifactory-public</id>
+			<name>artifactory-public</name>
+			<url>https://artifactory.v3.abes.fr/artifactory/maven-public/</url>
+		</pluginRepository>
+	</pluginRepositories>
     <properties>
         <java.version>11</java.version>
         <elasticsearch.version>7.4.0</elasticsearch.version>
