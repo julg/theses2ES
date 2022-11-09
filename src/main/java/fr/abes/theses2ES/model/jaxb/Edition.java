@@ -1,195 +1,185 @@
 //
-// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par l'implÃ©mentation de rÃ©fÃ©rence JavaTM Architecture for XML Binding (JAXB), v2.3.0 
-// Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
-// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
-// GÃ©nÃ©rÃ© le : 2018.09.12 Ã  05:12:30 PM CEST 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+// Généré le : 2022.11.08 à 03:14:28 PM CET 
 //
 
 
 package fr.abes.theses2ES.model.jaxb;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
  * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element ref="{http://purl.org/dc/terms/}medium"/&gt;
- *         &lt;element ref="{http://purl.org/dc/terms/}extent"/&gt;
- *         &lt;element ref="{http://purl.org/dc/elements/1.1/}identifier" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;sequence minOccurs="0"&gt;
- *           &lt;element ref="{http://www.abes.fr/abes/documents/tef}editeur"/&gt;
- *           &lt;element ref="{http://purl.org/dc/terms/}issued"/&gt;
- *         &lt;/sequence&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType>
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element ref="{http://purl.org/dc/elements/1.1/}identifier"/>
+ *         &lt;sequence minOccurs="0">
+ *           &lt;element ref="{http://www.theses.fr/namespace/tefudoc}collation"/>
+ *           &lt;element ref="{http://www.theses.fr/namespace/tefudoc}biblioIndex"/>
+ *           &lt;element ref="{http://www.theses.fr/namespace/tefudoc}noteGenerale"/>
+ *           &lt;element ref="{http://www.theses.fr/namespace/tefudoc}exemplaires"/>
+ *         &lt;/sequence>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "medium",
-    "extent",
     "identifier",
-    "editeur",
-    "issued"
+    "collation",
+    "biblioIndex",
+    "noteGenerale",
+    "exemplaires"
 })
 @XmlRootElement(name = "edition")
 public class Edition {
 
-    @XmlElement(namespace = "http://purl.org/dc/terms/", required = true)
-    protected String medium;
-    @XmlElement(namespace = "http://purl.org/dc/terms/", required = true)
-    protected String extent;
-    @XmlElement(namespace = "http://purl.org/dc/elements/1.1/")
-    @XmlSchemaType(name = "anyURI")
-    protected List<String> identifier;
-    protected Editeur editeur;
-    @XmlElement(namespace = "http://purl.org/dc/terms/")
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar issued;
+    @XmlElement(namespace = "http://purl.org/dc/elements/1.1/", required = true)
+    protected Identifier identifier;
+    @XmlElement(namespace = "http://www.theses.fr/namespace/tefudoc")
+    protected String collation;
+    @XmlElement(namespace = "http://www.theses.fr/namespace/tefudoc")
+    protected String biblioIndex;
+    @XmlElement(namespace = "http://www.theses.fr/namespace/tefudoc")
+    protected String noteGenerale;
+    @XmlElement(namespace = "http://www.theses.fr/namespace/tefudoc")
+    protected Exemplaires exemplaires;
 
     /**
-     * Obtient la valeur de la propriÃ©tÃ© medium.
+     * Obtient la valeur de la propriété identifier.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Identifier }
+     *     
+     */
+    public Identifier getIdentifier() {
+        return identifier;
+    }
+
+    /**
+     * Définit la valeur de la propriété identifier.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Identifier }
+     *     
+     */
+    public void setIdentifier(Identifier value) {
+        this.identifier = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété collation.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getMedium() {
-        return medium;
+    public String getCollation() {
+        return collation;
     }
 
     /**
-     * DÃ©finit la valeur de la propriÃ©tÃ© medium.
+     * Définit la valeur de la propriété collation.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setMedium(String value) {
-        this.medium = value;
+    public void setCollation(String value) {
+        this.collation = value;
     }
 
     /**
-     * Obtient la valeur de la propriÃ©tÃ© extent.
+     * Obtient la valeur de la propriété biblioIndex.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getExtent() {
-        return extent;
+    public String getBiblioIndex() {
+        return biblioIndex;
     }
 
     /**
-     * DÃ©finit la valeur de la propriÃ©tÃ© extent.
+     * Définit la valeur de la propriété biblioIndex.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setExtent(String value) {
-        this.extent = value;
+    public void setBiblioIndex(String value) {
+        this.biblioIndex = value;
     }
 
     /**
-     * Gets the value of the identifier property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the identifier property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getIdentifier().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
-     */
-    public List<String> getIdentifier() {
-        if (identifier == null) {
-            identifier = new ArrayList<String>();
-        }
-        return this.identifier;
-    }
-
-    /**
-     * Obtient la valeur de la propriÃ©tÃ© editeur.
+     * Obtient la valeur de la propriété noteGenerale.
      * 
      * @return
      *     possible object is
-     *     {@link Editeur }
+     *     {@link String }
      *     
      */
-    public Editeur getEditeur() {
-        return editeur;
+    public String getNoteGenerale() {
+        return noteGenerale;
     }
 
     /**
-     * DÃ©finit la valeur de la propriÃ©tÃ© editeur.
+     * Définit la valeur de la propriété noteGenerale.
      * 
      * @param value
      *     allowed object is
-     *     {@link Editeur }
+     *     {@link String }
      *     
      */
-    public void setEditeur(Editeur value) {
-        this.editeur = value;
+    public void setNoteGenerale(String value) {
+        this.noteGenerale = value;
     }
 
     /**
-     * Obtient la valeur de la propriÃ©tÃ© issued.
+     * Obtient la valeur de la propriété exemplaires.
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Exemplaires }
      *     
      */
-    public XMLGregorianCalendar getIssued() {
-        return issued;
+    public Exemplaires getExemplaires() {
+        return exemplaires;
     }
 
     /**
-     * DÃ©finit la valeur de la propriÃ©tÃ© issued.
+     * Définit la valeur de la propriété exemplaires.
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Exemplaires }
      *     
      */
-    public void setIssued(XMLGregorianCalendar value) {
-        this.issued = value;
+    public void setExemplaires(Exemplaires value) {
+        this.exemplaires = value;
     }
 
 }

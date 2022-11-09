@@ -1,8 +1,8 @@
 //
-// Ce fichier a √©t√© g√©n√©r√© par l'impl√©mentation de r√©f√©rence JavaTM Architecture for XML Binding (JAXB), v2.3.0 
-// Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
-// Toute modification apport√©e √† ce fichier sera perdue lors de la recompilation du sch√©ma source. 
-// G√©n√©r√© le : 2018.09.12 √† 05:12:30 PM CEST 
+// Ce fichier a ÈtÈ gÈnÈrÈ par l'implÈmentation de rÈfÈrence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Toute modification apportÈe ‡ ce fichier sera perdue lors de la recompilation du schÈma source. 
+// GÈnÈrÈ le : 2022.11.08 ‡ 03:14:28 PM CET 
 //
 
 
@@ -22,22 +22,21 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 /**
  * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de sch√©ma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schÈma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}nom"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}autoriteInterne"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}autoriteExterne"/&gt;
- *       &lt;/sequence&gt;
- *       &lt;attribute name="autreType" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" /&gt;
- *       &lt;attribute name="type" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" /&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType>
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}nom"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}autoriteInterne"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}autoriteExterne"/>
+ *       &lt;/sequence>
+ *       &lt;attribute name="type" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
@@ -59,16 +58,13 @@ public class PartenaireRecherche {
     protected String autoriteInterne;
     @XmlElement(required = true)
     protected AutoriteExterne autoriteExterne;
-    @XmlAttribute(name = "autreType")
-    @XmlSchemaType(name = "anySimpleType")
-    protected String autreType;
     @XmlAttribute(name = "type", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "NCName")
     protected String type;
 
     /**
-     * Obtient la valeur de la propri√©t√© nom.
+     * Obtient la valeur de la propriÈtÈ nom.
      * 
      * @return
      *     possible object is
@@ -80,7 +76,7 @@ public class PartenaireRecherche {
     }
 
     /**
-     * D√©finit la valeur de la propri√©t√© nom.
+     * DÈfinit la valeur de la propriÈtÈ nom.
      * 
      * @param value
      *     allowed object is
@@ -92,7 +88,7 @@ public class PartenaireRecherche {
     }
 
     /**
-     * Obtient la valeur de la propri√©t√© autoriteInterne.
+     * Obtient la valeur de la propriÈtÈ autoriteInterne.
      * 
      * @return
      *     possible object is
@@ -104,7 +100,7 @@ public class PartenaireRecherche {
     }
 
     /**
-     * D√©finit la valeur de la propri√©t√© autoriteInterne.
+     * DÈfinit la valeur de la propriÈtÈ autoriteInterne.
      * 
      * @param value
      *     allowed object is
@@ -116,7 +112,7 @@ public class PartenaireRecherche {
     }
 
     /**
-     * Obtient la valeur de la propri√©t√© autoriteExterne.
+     * Obtient la valeur de la propriÈtÈ autoriteExterne.
      * 
      * @return
      *     possible object is
@@ -128,7 +124,7 @@ public class PartenaireRecherche {
     }
 
     /**
-     * D√©finit la valeur de la propri√©t√© autoriteExterne.
+     * DÈfinit la valeur de la propriÈtÈ autoriteExterne.
      * 
      * @param value
      *     allowed object is
@@ -140,31 +136,7 @@ public class PartenaireRecherche {
     }
 
     /**
-     * Obtient la valeur de la propri√©t√© autreType.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAutreType() {
-        return autreType;
-    }
-
-    /**
-     * D√©finit la valeur de la propri√©t√© autreType.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAutreType(String value) {
-        this.autreType = value;
-    }
-
-    /**
-     * Obtient la valeur de la propri√©t√© type.
+     * Obtient la valeur de la propriÈtÈ type.
      * 
      * @return
      *     possible object is
@@ -176,7 +148,7 @@ public class PartenaireRecherche {
     }
 
     /**
-     * D√©finit la valeur de la propri√©t√© type.
+     * DÈfinit la valeur de la propriÈtÈ type.
      * 
      * @param value
      *     allowed object is

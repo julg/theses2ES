@@ -1,21 +1,9 @@
 //
-// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par l'implÃ©mentation de rÃ©fÃ©rence JavaTM Architecture for XML Binding (JAXB), v2.3.0 
-// Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
-// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
-// GÃ©nÃ©rÃ© le : 2018.09.11 Ã  05:44:58 PM CEST 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+// Généré le : 2022.11.08 à 03:14:28 PM CET 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.abes.fr/abes/documents/tef", xmlns = {
-		@XmlNs(prefix = "mets", namespaceURI = "http://www.loc.gov/METS/"),
-		@XmlNs(prefix = "suj", namespaceURI =  "http://www.theses.fr/namespace/sujets"),
-		@XmlNs(prefix = "dc", namespaceURI =  "http://purl.org/dc/elements/1.1/"),
-		@XmlNs(prefix = "dcterms", namespaceURI =  "http://purl.org/dc/terms/"),
-		@XmlNs(prefix = "tef", namespaceURI =  "http://www.abes.fr/abes/documents/tef"),
-		@XmlNs(prefix = "tefextension", namespaceURI =  "http://www.abes.fr/abes/documents/tefextension"),
-		@XmlNs(prefix = "xlink", namespaceURI =  "http://www.w3.org/1999/xlink"),
-		@XmlNs(prefix = "metsRights", namespaceURI =  "http://cosimo.stanford.edu/sdr/metsrights/"),  
-		@XmlNs(prefix = "mads", namespaceURI =  "http://www.loc.gov/mads/")
-	}, elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.abes.fr/abes/documents/tef", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package fr.abes.theses2ES.model.jaxb;
-
-import javax.xml.bind.annotation.XmlNs;

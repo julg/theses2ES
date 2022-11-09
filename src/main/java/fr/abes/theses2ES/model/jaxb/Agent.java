@@ -11,10 +11,10 @@ package fr.abes.theses2ES.model.jaxb;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -28,7 +28,11 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="type" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *       &lt;sequence>
+ *         &lt;element ref="{http://www.loc.gov/METS/}name"/>
+ *         &lt;element ref="{http://www.loc.gov/METS/}note" minOccurs="0"/>
+ *       &lt;/sequence>
+ *       &lt;attribute name="ROLE" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -38,64 +42,93 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "content"
+    "name",
+    "note"
 })
-@XmlRootElement(name = "namePart", namespace = "http://www.loc.gov/mads/")
-public class NamePart {
+@XmlRootElement(name = "agent", namespace = "http://www.loc.gov/METS/")
+public class Agent {
 
-    @XmlValue
-    protected String content;
-    @XmlAttribute(name = "type", required = true)
+    @XmlElement(namespace = "http://www.loc.gov/METS/", required = true)
+    protected String name;
+    @XmlElement(namespace = "http://www.loc.gov/METS/")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "NCName")
-    protected String type;
+    protected String note;
+    @XmlAttribute(name = "ROLE", required = true)
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlSchemaType(name = "NCName")
+    protected String role;
 
     /**
-     * Obtient la valeur de la propriété content.
+     * Obtient la valeur de la propriété name.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getContent() {
-        return content;
+    public String getName() {
+        return name;
     }
 
     /**
-     * Définit la valeur de la propriété content.
+     * Définit la valeur de la propriété name.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setContent(String value) {
-        this.content = value;
+    public void setName(String value) {
+        this.name = value;
     }
 
     /**
-     * Obtient la valeur de la propriété type.
+     * Obtient la valeur de la propriété note.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getType() {
-        return type;
+    public String getNote() {
+        return note;
     }
 
     /**
-     * Définit la valeur de la propriété type.
+     * Définit la valeur de la propriété note.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setType(String value) {
-        this.type = value;
+    public void setNote(String value) {
+        this.note = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété role.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getROLE() {
+        return role;
+    }
+
+    /**
+     * Définit la valeur de la propriété role.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setROLE(String value) {
+        this.role = value;
     }
 
 }

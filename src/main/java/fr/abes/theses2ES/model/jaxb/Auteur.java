@@ -1,8 +1,8 @@
 //
-// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par l'implÃ©mentation de rÃ©fÃ©rence JavaTM Architecture for XML Binding (JAXB), v2.3.0 
-// Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
-// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
-// GÃ©nÃ©rÃ© le : 2018.09.12 Ã  05:12:30 PM CEST 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+// Généré le : 2022.11.08 à 03:14:28 PM CET 
 //
 
 
@@ -20,22 +20,22 @@ import javax.xml.datatype.XMLGregorianCalendar;
 /**
  * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}nom"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}prenom"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}dateNaissance"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}nationalite"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}autoriteExterne"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType>
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}nom"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}prenom"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}dateNaissance"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}nationalite"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}autoriteExterne"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
@@ -64,7 +64,7 @@ public class Auteur {
     protected AutoriteExterne autoriteExterne;
 
     /**
-     * Obtient la valeur de la propriÃ©tÃ© nom.
+     * Obtient la valeur de la propriété nom.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class Auteur {
     }
 
     /**
-     * DÃ©finit la valeur de la propriÃ©tÃ© nom.
+     * Définit la valeur de la propriété nom.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class Auteur {
     }
 
     /**
-     * Obtient la valeur de la propriÃ©tÃ© prenom.
+     * Obtient la valeur de la propriété prenom.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class Auteur {
     }
 
     /**
-     * DÃ©finit la valeur de la propriÃ©tÃ© prenom.
+     * Définit la valeur de la propriété prenom.
      * 
      * @param value
      *     allowed object is
@@ -112,7 +112,7 @@ public class Auteur {
     }
 
     /**
-     * Obtient la valeur de la propriÃ©tÃ© dateNaissance.
+     * Obtient la valeur de la propriété dateNaissance.
      * 
      * @return
      *     possible object is
@@ -124,7 +124,7 @@ public class Auteur {
     }
 
     /**
-     * DÃ©finit la valeur de la propriÃ©tÃ© dateNaissance.
+     * Définit la valeur de la propriété dateNaissance.
      * 
      * @param value
      *     allowed object is
@@ -136,7 +136,7 @@ public class Auteur {
     }
 
     /**
-     * Obtient la valeur de la propriÃ©tÃ© nationalite.
+     * Obtient la valeur de la propriété nationalite.
      * 
      * @return
      *     possible object is
@@ -148,7 +148,7 @@ public class Auteur {
     }
 
     /**
-     * DÃ©finit la valeur de la propriÃ©tÃ© nationalite.
+     * Définit la valeur de la propriété nationalite.
      * 
      * @param value
      *     allowed object is
@@ -160,7 +160,7 @@ public class Auteur {
     }
 
     /**
-     * Obtient la valeur de la propriÃ©tÃ© autoriteExterne.
+     * Obtient la valeur de la propriété autoriteExterne.
      * 
      * @return
      *     possible object is
@@ -172,7 +172,7 @@ public class Auteur {
     }
 
     /**
-     * DÃ©finit la valeur de la propriÃ©tÃ© autoriteExterne.
+     * Définit la valeur de la propriété autoriteExterne.
      * 
      * @param value
      *     allowed object is

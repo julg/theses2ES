@@ -1,15 +1,13 @@
 //
-// Ce fichier a √©t√© g√©n√©r√© par l'impl√©mentation de r√©f√©rence JavaTM Architecture for XML Binding (JAXB), v2.3.0 
-// Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
-// Toute modification apport√©e √† ce fichier sera perdue lors de la recompilation du sch√©ma source. 
-// G√©n√©r√© le : 2018.09.12 √† 05:12:30 PM CEST 
+// Ce fichier a ÈtÈ gÈnÈrÈ par l'implÈmentation de rÈfÈrence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Toute modification apportÈe ‡ ce fichier sera perdue lors de la recompilation du schÈma source. 
+// GÈnÈrÈ le : 2022.11.08 ‡ 03:14:28 PM CET 
 //
 
 
 package fr.abes.theses2ES.model.jaxb;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -24,112 +22,75 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 /**
  * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de sch√©ma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schÈma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element ref="{http://www.loc.gov/METS/}div" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element ref="{http://www.loc.gov/METS/}fptr" minOccurs="0"/&gt;
- *       &lt;/sequence&gt;
- *       &lt;attribute name="ADMID" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" /&gt;
- *       &lt;attribute name="CONTENTIDS" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" /&gt;
- *       &lt;attribute name="DMDID" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" /&gt;
- *       &lt;attribute name="ID" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" /&gt;
- *       &lt;attribute name="TYPE" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" /&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType>
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element ref="{http://www.loc.gov/METS/}div" minOccurs="0"/>
+ *       &lt;/sequence>
+ *       &lt;attribute name="ADMID" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *       &lt;attribute name="CONTENTIDS" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *       &lt;attribute name="DMDID" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *       &lt;attribute name="TYPE" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "div",
-    "fptr"
+    "div"
 })
 @XmlRootElement(name = "div", namespace = "http://www.loc.gov/METS/")
 public class Div {
 
     @XmlElement(namespace = "http://www.loc.gov/METS/")
-    protected List<Div> div;
-    @XmlElement(namespace = "http://www.loc.gov/METS/")
-    protected Fptr fptr;
+    protected Div div;
     @XmlAttribute(name = "ADMID")
     @XmlSchemaType(name = "anySimpleType")
     protected String admid;
-    @XmlAttribute(name = "CONTENTIDS")
+    @XmlAttribute(name = "CONTENTIDS", required = true)
     @XmlSchemaType(name = "anySimpleType")
     protected String contentids;
-    @XmlAttribute(name = "DMDID")
+    @XmlAttribute(name = "DMDID", required = true)
     @XmlSchemaType(name = "anySimpleType")
     protected String dmdid;
-    @XmlAttribute(name = "ID")
-    @XmlSchemaType(name = "anySimpleType")
-    protected String id;
     @XmlAttribute(name = "TYPE", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "NCName")
     protected String type;
 
     /**
-     * Gets the value of the div property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the div property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getDiv().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Div }
-     * 
-     * 
-     */
-    public List<Div> getDiv() {
-        if (div == null) {
-            div = new ArrayList<Div>();
-        }
-        return this.div;
-    }
-
-    /**
-     * Obtient la valeur de la propri√©t√© fptr.
+     * Obtient la valeur de la propriÈtÈ div.
      * 
      * @return
      *     possible object is
-     *     {@link Fptr }
+     *     {@link Div }
      *     
      */
-    public Fptr getFptr() {
-        return fptr;
+    public Div getDiv() {
+        return div;
     }
 
     /**
-     * D√©finit la valeur de la propri√©t√© fptr.
+     * DÈfinit la valeur de la propriÈtÈ div.
      * 
      * @param value
      *     allowed object is
-     *     {@link Fptr }
+     *     {@link Div }
      *     
      */
-    public void setFptr(Fptr value) {
-        this.fptr = value;
+    public void setDiv(Div value) {
+        this.div = value;
     }
 
     /**
-     * Obtient la valeur de la propri√©t√© admid.
+     * Obtient la valeur de la propriÈtÈ admid.
      * 
      * @return
      *     possible object is
@@ -141,7 +102,7 @@ public class Div {
     }
 
     /**
-     * D√©finit la valeur de la propri√©t√© admid.
+     * DÈfinit la valeur de la propriÈtÈ admid.
      * 
      * @param value
      *     allowed object is
@@ -153,7 +114,7 @@ public class Div {
     }
 
     /**
-     * Obtient la valeur de la propri√©t√© contentids.
+     * Obtient la valeur de la propriÈtÈ contentids.
      * 
      * @return
      *     possible object is
@@ -165,7 +126,7 @@ public class Div {
     }
 
     /**
-     * D√©finit la valeur de la propri√©t√© contentids.
+     * DÈfinit la valeur de la propriÈtÈ contentids.
      * 
      * @param value
      *     allowed object is
@@ -177,7 +138,7 @@ public class Div {
     }
 
     /**
-     * Obtient la valeur de la propri√©t√© dmdid.
+     * Obtient la valeur de la propriÈtÈ dmdid.
      * 
      * @return
      *     possible object is
@@ -189,7 +150,7 @@ public class Div {
     }
 
     /**
-     * D√©finit la valeur de la propri√©t√© dmdid.
+     * DÈfinit la valeur de la propriÈtÈ dmdid.
      * 
      * @param value
      *     allowed object is
@@ -201,31 +162,7 @@ public class Div {
     }
 
     /**
-     * Obtient la valeur de la propri√©t√© id.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getID() {
-        return id;
-    }
-
-    /**
-     * D√©finit la valeur de la propri√©t√© id.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setID(String value) {
-        this.id = value;
-    }
-
-    /**
-     * Obtient la valeur de la propri√©t√© type.
+     * Obtient la valeur de la propriÈtÈ type.
      * 
      * @return
      *     possible object is
@@ -237,7 +174,7 @@ public class Div {
     }
 
     /**
-     * D√©finit la valeur de la propri√©t√© type.
+     * DÈfinit la valeur de la propriÈtÈ type.
      * 
      * @param value
      *     allowed object is

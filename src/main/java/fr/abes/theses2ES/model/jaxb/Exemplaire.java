@@ -8,9 +8,9 @@
 
 package fr.abes.theses2ES.model.jaxb;
 
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
@@ -29,10 +29,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.loc.gov/METS/}xmlData"/>
+ *         &lt;element ref="{http://www.theses.fr/namespace/tefudoc}rcr"/>
+ *         &lt;element ref="{http://www.theses.fr/namespace/tefudoc}cote"/>
+ *         &lt;element ref="{http://www.theses.fr/namespace/tefudoc}peb"/>
  *       &lt;/sequence>
- *       &lt;attribute name="MDTYPE" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="OTHERMDTYPE" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -42,92 +42,92 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "xmlData"
+    "rcr",
+    "cote",
+    "peb"
 })
-@XmlRootElement(name = "mdWrap", namespace = "http://www.loc.gov/METS/")
-public class MdWrap {
+@XmlRootElement(name = "exemplaire", namespace = "http://www.theses.fr/namespace/tefudoc")
+public class Exemplaire {
 
-    @XmlElement(namespace = "http://www.loc.gov/METS/", required = true)
-    protected XmlData xmlData;
-    @XmlAttribute(name = "MDTYPE", required = true)
+    @XmlElement(namespace = "http://www.theses.fr/namespace/tefudoc", required = true)
+    protected BigInteger rcr;
+    @XmlElement(namespace = "http://www.theses.fr/namespace/tefudoc", required = true)
+    protected Cote cote;
+    @XmlElement(namespace = "http://www.theses.fr/namespace/tefudoc", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "NCName")
-    protected String mdtype;
-    @XmlAttribute(name = "OTHERMDTYPE", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NCName")
-    protected String othermdtype;
+    protected String peb;
 
     /**
-     * Obtient la valeur de la propriété xmlData.
+     * Obtient la valeur de la propriété rcr.
      * 
      * @return
      *     possible object is
-     *     {@link XmlData }
+     *     {@link BigInteger }
      *     
      */
-    public XmlData getXmlData() {
-        return xmlData;
+    public BigInteger getRcr() {
+        return rcr;
     }
 
     /**
-     * Définit la valeur de la propriété xmlData.
+     * Définit la valeur de la propriété rcr.
      * 
      * @param value
      *     allowed object is
-     *     {@link XmlData }
+     *     {@link BigInteger }
      *     
      */
-    public void setXmlData(XmlData value) {
-        this.xmlData = value;
+    public void setRcr(BigInteger value) {
+        this.rcr = value;
     }
 
     /**
-     * Obtient la valeur de la propriété mdtype.
+     * Obtient la valeur de la propriété cote.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Cote }
      *     
      */
-    public String getMDTYPE() {
-        return mdtype;
+    public Cote getCote() {
+        return cote;
     }
 
     /**
-     * Définit la valeur de la propriété mdtype.
+     * Définit la valeur de la propriété cote.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Cote }
      *     
      */
-    public void setMDTYPE(String value) {
-        this.mdtype = value;
+    public void setCote(Cote value) {
+        this.cote = value;
     }
 
     /**
-     * Obtient la valeur de la propriété othermdtype.
+     * Obtient la valeur de la propriété peb.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getOTHERMDTYPE() {
-        return othermdtype;
+    public String getPeb() {
+        return peb;
     }
 
     /**
-     * Définit la valeur de la propriété othermdtype.
+     * Définit la valeur de la propriété peb.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setOTHERMDTYPE(String value) {
-        this.othermdtype = value;
+    public void setPeb(String value) {
+        this.peb = value;
     }
 
 }

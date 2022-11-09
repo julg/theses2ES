@@ -1,8 +1,8 @@
 //
-// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par l'implÃ©mentation de rÃ©fÃ©rence JavaTM Architecture for XML Binding (JAXB), v2.3.0 
-// Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
-// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
-// GÃ©nÃ©rÃ© le : 2018.09.12 Ã  05:12:30 PM CEST 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+// Généré le : 2022.11.08 à 03:14:28 PM CET 
 //
 
 
@@ -18,18 +18,18 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>Classe Java pour mets.mdWrap complex type.
  * 
- * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="mets.mdWrap"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element ref="{http://www.loc.gov/METS/}mdWrap"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType name="mets.mdWrap">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element ref="{http://www.loc.gov/METS/}mdWrap"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
@@ -39,9 +39,8 @@ import javax.xml.bind.annotation.XmlType;
     "mdWrap"
 })
 @XmlSeeAlso({
-    RightsMD.class,
-    TechMD.class,
-    DmdSec.class
+    DmdSec.class,
+    TechMD.class
 })
 public class MetsMdWrap {
 
@@ -49,7 +48,7 @@ public class MetsMdWrap {
     protected MdWrap mdWrap;
 
     /**
-     * Obtient la valeur de la propriÃ©tÃ© mdWrap.
+     * Obtient la valeur de la propriété mdWrap.
      * 
      * @return
      *     possible object is
@@ -61,7 +60,7 @@ public class MetsMdWrap {
     }
 
     /**
-     * DÃ©finit la valeur de la propriÃ©tÃ© mdWrap.
+     * Définit la valeur de la propriété mdWrap.
      * 
      * @param value
      *     allowed object is

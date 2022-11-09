@@ -1,8 +1,8 @@
 //
-// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par l'implÃ©mentation de rÃ©fÃ©rence JavaTM Architecture for XML Binding (JAXB), v2.3.0 
-// Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
-// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
-// GÃ©nÃ©rÃ© le : 2018.09.12 Ã  05:12:30 PM CEST 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+// Généré le : 2022.11.08 à 03:14:28 PM CET 
 //
 
 
@@ -20,43 +20,67 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element ref="{http://www.loc.gov/METS/}dmdSec" maxOccurs="unbounded"/&gt;
- *         &lt;element ref="{http://www.loc.gov/METS/}amdSec"/&gt;
- *         &lt;element ref="{http://www.loc.gov/METS/}fileSec"/&gt;
- *         &lt;element ref="{http://www.loc.gov/METS/}structMap"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType>
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element ref="{http://www.loc.gov/METS/}metsHdr"/>
+ *         &lt;element ref="{http://www.loc.gov/METS/}dmdSec" maxOccurs="unbounded"/>
+ *         &lt;element ref="{http://www.loc.gov/METS/}amdSec"/>
+ *         &lt;element ref="{http://www.loc.gov/METS/}structMap"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+    "metsHdr",
     "dmdSec",
     "amdSec",
-    "fileSec",
     "structMap"
 })
 @XmlRootElement(name = "mets", namespace = "http://www.loc.gov/METS/")
 public class Mets {
 
     @XmlElement(namespace = "http://www.loc.gov/METS/", required = true)
+    protected MetsHdr metsHdr;
+    @XmlElement(namespace = "http://www.loc.gov/METS/", required = true)
     protected List<DmdSec> dmdSec;
     @XmlElement(namespace = "http://www.loc.gov/METS/", required = true)
     protected AmdSec amdSec;
     @XmlElement(namespace = "http://www.loc.gov/METS/", required = true)
-    protected FileSec fileSec;
-    @XmlElement(namespace = "http://www.loc.gov/METS/", required = true)
     protected StructMap structMap;
+
+    /**
+     * Obtient la valeur de la propriété metsHdr.
+     * 
+     * @return
+     *     possible object is
+     *     {@link MetsHdr }
+     *     
+     */
+    public MetsHdr getMetsHdr() {
+        return metsHdr;
+    }
+
+    /**
+     * Définit la valeur de la propriété metsHdr.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MetsHdr }
+     *     
+     */
+    public void setMetsHdr(MetsHdr value) {
+        this.metsHdr = value;
+    }
 
     /**
      * Gets the value of the dmdSec property.
@@ -88,7 +112,7 @@ public class Mets {
     }
 
     /**
-     * Obtient la valeur de la propriÃ©tÃ© amdSec.
+     * Obtient la valeur de la propriété amdSec.
      * 
      * @return
      *     possible object is
@@ -100,7 +124,7 @@ public class Mets {
     }
 
     /**
-     * DÃ©finit la valeur de la propriÃ©tÃ© amdSec.
+     * Définit la valeur de la propriété amdSec.
      * 
      * @param value
      *     allowed object is
@@ -112,31 +136,7 @@ public class Mets {
     }
 
     /**
-     * Obtient la valeur de la propriÃ©tÃ© fileSec.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FileSec }
-     *     
-     */
-    public FileSec getFileSec() {
-        return fileSec;
-    }
-
-    /**
-     * DÃ©finit la valeur de la propriÃ©tÃ© fileSec.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FileSec }
-     *     
-     */
-    public void setFileSec(FileSec value) {
-        this.fileSec = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriÃ©tÃ© structMap.
+     * Obtient la valeur de la propriété structMap.
      * 
      * @return
      *     possible object is
@@ -148,7 +148,7 @@ public class Mets {
     }
 
     /**
-     * DÃ©finit la valeur de la propriÃ©tÃ© structMap.
+     * Définit la valeur de la propriété structMap.
      * 
      * @param value
      *     allowed object is

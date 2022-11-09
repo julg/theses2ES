@@ -10,10 +10,9 @@ package fr.abes.theses2ES.model.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 
 
 /**
@@ -24,9 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.abes.fr/abes/documents/tef}mets.mdWrap">
- *       &lt;attribute name="ID" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *     &lt;/extension>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -34,38 +32,37 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
-@XmlRootElement(name = "dmdSec", namespace = "http://www.loc.gov/METS/")
-public class DmdSec
-    extends MetsMdWrap
-{
+@XmlType(name = "", propOrder = {
+    "content"
+})
+@XmlRootElement(name = "type", namespace = "http://purl.org/dc/elements/1.1/")
+public class Type {
 
-    @XmlAttribute(name = "ID", required = true)
-    @XmlSchemaType(name = "anySimpleType")
-    protected String id;
+    @XmlValue
+    protected String content;
 
     /**
-     * Obtient la valeur de la propriété id.
+     * Obtient la valeur de la propriété content.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getID() {
-        return id;
+    public String getContent() {
+        return content;
     }
 
     /**
-     * Définit la valeur de la propriété id.
+     * Définit la valeur de la propriété content.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setID(String value) {
-        this.id = value;
+    public void setContent(String value) {
+        this.content = value;
     }
 
 }
