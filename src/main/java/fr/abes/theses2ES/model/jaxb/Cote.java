@@ -10,7 +10,6 @@ package fr.abes.theses2ES.model.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -24,9 +23,6 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://www.loc.gov/METS/}techMD"/>
- *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -35,37 +31,9 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "techMD"
-})
-@XmlRootElement(name = "amdSec", namespace = "http://www.loc.gov/METS/")
-public class AmdSec {
+@XmlType(name = "")
+@XmlRootElement(name = "cote", namespace = "http://www.theses.fr/namespace/tefudoc")
+public class Cote {
 
-    @XmlElement(namespace = "http://www.loc.gov/METS/", required = true)
-    protected TechMD techMD;
-
-    /**
-     * Obtient la valeur de la propriété techMD.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TechMD }
-     *     
-     */
-    public TechMD getTechMD() {
-        return techMD;
-    }
-
-    /**
-     * Définit la valeur de la propriété techMD.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TechMD }
-     *     
-     */
-    public void setTechMD(TechMD value) {
-        this.techMD = value;
-    }
 
 }

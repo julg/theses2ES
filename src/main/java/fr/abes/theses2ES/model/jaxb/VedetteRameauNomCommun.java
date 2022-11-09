@@ -1,15 +1,13 @@
 //
-// Ce fichier a Ã©tÃ© gÃ©nÃ©rÃ© par l'implÃ©mentation de rÃ©fÃ©rence JavaTM Architecture for XML Binding (JAXB), v2.3.0 
-// Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
-// Toute modification apportÃ©e Ã  ce fichier sera perdue lors de la recompilation du schÃ©ma source. 
-// GÃ©nÃ©rÃ© le : 2018.09.12 Ã  05:12:30 PM CEST 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+// Généré le : 2022.11.08 à 03:14:28 PM CET 
 //
 
 
 package fr.abes.theses2ES.model.jaxb;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -20,19 +18,19 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}elementdEntree"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}subdivision" maxOccurs="unbounded"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType>
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}elementdEntree"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}subdivision" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
@@ -47,11 +45,10 @@ public class VedetteRameauNomCommun {
 
     @XmlElement(required = true)
     protected ElementdEntree elementdEntree;
-    @XmlElement(required = true)
-    protected List<Subdivision> subdivision;
+    protected Subdivision subdivision;
 
     /**
-     * Obtient la valeur de la propriÃ©tÃ© elementdEntree.
+     * Obtient la valeur de la propriété elementdEntree.
      * 
      * @return
      *     possible object is
@@ -63,7 +60,7 @@ public class VedetteRameauNomCommun {
     }
 
     /**
-     * DÃ©finit la valeur de la propriÃ©tÃ© elementdEntree.
+     * Définit la valeur de la propriété elementdEntree.
      * 
      * @param value
      *     allowed object is
@@ -75,32 +72,27 @@ public class VedetteRameauNomCommun {
     }
 
     /**
-     * Gets the value of the subdivision property.
+     * Obtient la valeur de la propriété subdivision.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the subdivision property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSubdivision().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Subdivision }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link Subdivision }
+     *     
      */
-    public List<Subdivision> getSubdivision() {
-        if (subdivision == null) {
-            subdivision = new ArrayList<Subdivision>();
-        }
-        return this.subdivision;
+    public Subdivision getSubdivision() {
+        return subdivision;
+    }
+
+    /**
+     * Définit la valeur de la propriété subdivision.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Subdivision }
+     *     
+     */
+    public void setSubdivision(Subdivision value) {
+        this.subdivision = value;
     }
 
 }

@@ -1,8 +1,8 @@
 //
-// Ce fichier a √©t√© g√©n√©r√© par l'impl√©mentation de r√©f√©rence JavaTM Architecture for XML Binding (JAXB), v2.3.0 
-// Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
-// Toute modification apport√©e √† ce fichier sera perdue lors de la recompilation du sch√©ma source. 
-// G√©n√©r√© le : 2018.09.12 √† 05:12:30 PM CEST 
+// Ce fichier a ÈtÈ gÈnÈrÈ par l'implÈmentation de rÈfÈrence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Toute modification apportÈe ‡ ce fichier sera perdue lors de la recompilation du schÈma source. 
+// GÈnÈrÈ le : 2022.11.08 ‡ 03:14:28 PM CET 
 //
 
 
@@ -18,37 +18,36 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
  * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Le fragment de sch√©ma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schÈma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}auteur"/&gt;
- *         &lt;element ref="{http://purl.org/dc/elements/1.1/}identifier" maxOccurs="unbounded"/&gt;
- *         &lt;element ref="{http://purl.org/dc/terms/}dateAccepted"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}thesis.degree"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}theseSurTravaux"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}avisJury"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}directeurThese"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}presidentJury"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}membreJury" maxOccurs="unbounded"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}rapporteur" maxOccurs="unbounded"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}ecoleDoctorale"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}partenaireRecherche" maxOccurs="unbounded"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}oaiSetSpec"/&gt;
- *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}MADSAuthority" maxOccurs="unbounded"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType>
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}auteur" maxOccurs="unbounded"/>
+ *         &lt;element ref="{http://purl.org/dc/elements/1.1/}identifier" maxOccurs="unbounded"/>
+ *         &lt;element ref="{http://purl.org/dc/terms/}dateAccepted"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}thesis.degree"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}theseSurTravaux"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}avisJury"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}presidentJury"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}directeurThese" maxOccurs="unbounded"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}membreJury" maxOccurs="unbounded"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}rapporteur" maxOccurs="unbounded"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}ecoleDoctorale" maxOccurs="unbounded"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}partenaireRecherche" maxOccurs="unbounded"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}oaiSetSpec" maxOccurs="unbounded"/>
+ *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}MADSAuthority" maxOccurs="unbounded"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
@@ -61,8 +60,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "thesisDegree",
     "theseSurTravaux",
     "avisJury",
-    "directeurThese",
     "presidentJury",
+    "directeurThese",
     "membreJury",
     "rapporteur",
     "ecoleDoctorale",
@@ -74,13 +73,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class ThesisAdmin {
 
     @XmlElement(required = true)
-    protected Auteur auteur;
+    protected List<Auteur> auteur;
     @XmlElement(namespace = "http://purl.org/dc/elements/1.1/", required = true)
-    @XmlSchemaType(name = "anyURI")
-    protected List<String> identifier;
+    protected List<Identifier> identifier;
     @XmlElement(namespace = "http://purl.org/dc/terms/", required = true)
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar dateAccepted;
+    protected DateAccepted dateAccepted;
     @XmlElement(name = "thesis.degree", required = true)
     protected ThesisDegree thesisDegree;
     @XmlElement(required = true)
@@ -92,46 +89,51 @@ public class ThesisAdmin {
     @XmlSchemaType(name = "NCName")
     protected String avisJury;
     @XmlElement(required = true)
-    protected DirecteurThese directeurThese;
-    @XmlElement(required = true)
     protected PresidentJury presidentJury;
+    @XmlElement(required = true)
+    protected List<DirecteurThese> directeurThese;
     @XmlElement(required = true)
     protected List<MembreJury> membreJury;
     @XmlElement(required = true)
     protected List<Rapporteur> rapporteur;
     @XmlElement(required = true)
-    protected EcoleDoctorale ecoleDoctorale;
+    protected List<EcoleDoctorale> ecoleDoctorale;
     @XmlElement(required = true)
     protected List<PartenaireRecherche> partenaireRecherche;
     @XmlElement(required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "NMTOKEN")
-    protected String oaiSetSpec;
+    protected List<String> oaiSetSpec;
     @XmlElement(name = "MADSAuthority", required = true)
     protected List<MADSAuthority> madsAuthority;
 
     /**
-     * Obtient la valeur de la propri√©t√© auteur.
+     * Gets the value of the auteur property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Auteur }
-     *     
-     */
-    public Auteur getAuteur() {
-        return auteur;
-    }
-
-    /**
-     * D√©finit la valeur de la propri√©t√© auteur.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the auteur property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Auteur }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getAuteur().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Auteur }
+     * 
+     * 
      */
-    public void setAuteur(Auteur value) {
-        this.auteur = value;
+    public List<Auteur> getAuteur() {
+        if (auteur == null) {
+            auteur = new ArrayList<Auteur>();
+        }
+        return this.auteur;
     }
 
     /**
@@ -152,43 +154,43 @@ public class ThesisAdmin {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link String }
+     * {@link Identifier }
      * 
      * 
      */
-    public List<String> getIdentifier() {
+    public List<Identifier> getIdentifier() {
         if (identifier == null) {
-            identifier = new ArrayList<String>();
+            identifier = new ArrayList<Identifier>();
         }
         return this.identifier;
     }
 
     /**
-     * Obtient la valeur de la propri√©t√© dateAccepted.
+     * Obtient la valeur de la propriÈtÈ dateAccepted.
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link DateAccepted }
      *     
      */
-    public XMLGregorianCalendar getDateAccepted() {
+    public DateAccepted getDateAccepted() {
         return dateAccepted;
     }
 
     /**
-     * D√©finit la valeur de la propri√©t√© dateAccepted.
+     * DÈfinit la valeur de la propriÈtÈ dateAccepted.
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link DateAccepted }
      *     
      */
-    public void setDateAccepted(XMLGregorianCalendar value) {
+    public void setDateAccepted(DateAccepted value) {
         this.dateAccepted = value;
     }
 
     /**
-     * Obtient la valeur de la propri√©t√© thesisDegree.
+     * Obtient la valeur de la propriÈtÈ thesisDegree.
      * 
      * @return
      *     possible object is
@@ -200,7 +202,7 @@ public class ThesisAdmin {
     }
 
     /**
-     * D√©finit la valeur de la propri√©t√© thesisDegree.
+     * DÈfinit la valeur de la propriÈtÈ thesisDegree.
      * 
      * @param value
      *     allowed object is
@@ -212,7 +214,7 @@ public class ThesisAdmin {
     }
 
     /**
-     * Obtient la valeur de la propri√©t√© theseSurTravaux.
+     * Obtient la valeur de la propriÈtÈ theseSurTravaux.
      * 
      * @return
      *     possible object is
@@ -224,7 +226,7 @@ public class ThesisAdmin {
     }
 
     /**
-     * D√©finit la valeur de la propri√©t√© theseSurTravaux.
+     * DÈfinit la valeur de la propriÈtÈ theseSurTravaux.
      * 
      * @param value
      *     allowed object is
@@ -236,7 +238,7 @@ public class ThesisAdmin {
     }
 
     /**
-     * Obtient la valeur de la propri√©t√© avisJury.
+     * Obtient la valeur de la propriÈtÈ avisJury.
      * 
      * @return
      *     possible object is
@@ -248,7 +250,7 @@ public class ThesisAdmin {
     }
 
     /**
-     * D√©finit la valeur de la propri√©t√© avisJury.
+     * DÈfinit la valeur de la propriÈtÈ avisJury.
      * 
      * @param value
      *     allowed object is
@@ -260,31 +262,7 @@ public class ThesisAdmin {
     }
 
     /**
-     * Obtient la valeur de la propri√©t√© directeurThese.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DirecteurThese }
-     *     
-     */
-    public DirecteurThese getDirecteurThese() {
-        return directeurThese;
-    }
-
-    /**
-     * D√©finit la valeur de la propri√©t√© directeurThese.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DirecteurThese }
-     *     
-     */
-    public void setDirecteurThese(DirecteurThese value) {
-        this.directeurThese = value;
-    }
-
-    /**
-     * Obtient la valeur de la propri√©t√© presidentJury.
+     * Obtient la valeur de la propriÈtÈ presidentJury.
      * 
      * @return
      *     possible object is
@@ -296,7 +274,7 @@ public class ThesisAdmin {
     }
 
     /**
-     * D√©finit la valeur de la propri√©t√© presidentJury.
+     * DÈfinit la valeur de la propriÈtÈ presidentJury.
      * 
      * @param value
      *     allowed object is
@@ -305,6 +283,35 @@ public class ThesisAdmin {
      */
     public void setPresidentJury(PresidentJury value) {
         this.presidentJury = value;
+    }
+
+    /**
+     * Gets the value of the directeurThese property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the directeurThese property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getDirecteurThese().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link DirecteurThese }
+     * 
+     * 
+     */
+    public List<DirecteurThese> getDirecteurThese() {
+        if (directeurThese == null) {
+            directeurThese = new ArrayList<DirecteurThese>();
+        }
+        return this.directeurThese;
     }
 
     /**
@@ -366,27 +373,32 @@ public class ThesisAdmin {
     }
 
     /**
-     * Obtient la valeur de la propri√©t√© ecoleDoctorale.
+     * Gets the value of the ecoleDoctorale property.
      * 
-     * @return
-     *     possible object is
-     *     {@link EcoleDoctorale }
-     *     
-     */
-    public EcoleDoctorale getEcoleDoctorale() {
-        return ecoleDoctorale;
-    }
-
-    /**
-     * D√©finit la valeur de la propri√©t√© ecoleDoctorale.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the ecoleDoctorale property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link EcoleDoctorale }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getEcoleDoctorale().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link EcoleDoctorale }
+     * 
+     * 
      */
-    public void setEcoleDoctorale(EcoleDoctorale value) {
-        this.ecoleDoctorale = value;
+    public List<EcoleDoctorale> getEcoleDoctorale() {
+        if (ecoleDoctorale == null) {
+            ecoleDoctorale = new ArrayList<EcoleDoctorale>();
+        }
+        return this.ecoleDoctorale;
     }
 
     /**
@@ -419,27 +431,32 @@ public class ThesisAdmin {
     }
 
     /**
-     * Obtient la valeur de la propri√©t√© oaiSetSpec.
+     * Gets the value of the oaiSetSpec property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getOaiSetSpec() {
-        return oaiSetSpec;
-    }
-
-    /**
-     * D√©finit la valeur de la propri√©t√© oaiSetSpec.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the oaiSetSpec property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getOaiSetSpec().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+     * 
      */
-    public void setOaiSetSpec(String value) {
-        this.oaiSetSpec = value;
+    public List<String> getOaiSetSpec() {
+        if (oaiSetSpec == null) {
+            oaiSetSpec = new ArrayList<String>();
+        }
+        return this.oaiSetSpec;
     }
 
     /**

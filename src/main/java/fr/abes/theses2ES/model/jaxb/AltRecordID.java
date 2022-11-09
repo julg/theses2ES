@@ -24,9 +24,10 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.abes.fr/abes/documents/tef}mets.mdWrap">
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;attribute name="ID" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *     &lt;/extension>
+ *       &lt;attribute name="TYPE" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -35,14 +36,15 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-@XmlRootElement(name = "dmdSec", namespace = "http://www.loc.gov/METS/")
-public class DmdSec
-    extends MetsMdWrap
-{
+@XmlRootElement(name = "altRecordID", namespace = "http://www.loc.gov/METS/")
+public class AltRecordID {
 
     @XmlAttribute(name = "ID", required = true)
     @XmlSchemaType(name = "anySimpleType")
     protected String id;
+    @XmlAttribute(name = "TYPE", required = true)
+    @XmlSchemaType(name = "anySimpleType")
+    protected String type;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -66,6 +68,30 @@ public class DmdSec
      */
     public void setID(String value) {
         this.id = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété type.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTYPE() {
+        return type;
+    }
+
+    /**
+     * Définit la valeur de la propriété type.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTYPE(String value) {
+        this.type = value;
     }
 
 }

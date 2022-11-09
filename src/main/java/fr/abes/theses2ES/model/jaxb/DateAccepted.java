@@ -10,10 +10,11 @@ package fr.abes.theses2ES.model.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -23,49 +24,48 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * <pre>
  * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;extension base="{http://www.abes.fr/abes/documents/tef}mets.mdWrap">
- *       &lt;attribute name="ID" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *   &lt;simpleContent>
+ *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>date">
  *     &lt;/extension>
- *   &lt;/complexContent>
+ *   &lt;/simpleContent>
  * &lt;/complexType>
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
-@XmlRootElement(name = "dmdSec", namespace = "http://www.loc.gov/METS/")
-public class DmdSec
-    extends MetsMdWrap
-{
+@XmlType(name = "", propOrder = {
+    "value"
+})
+@XmlRootElement(name = "dateAccepted", namespace = "http://purl.org/dc/terms/")
+public class DateAccepted {
 
-    @XmlAttribute(name = "ID", required = true)
-    @XmlSchemaType(name = "anySimpleType")
-    protected String id;
+    @XmlValue
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar value;
 
     /**
-     * Obtient la valeur de la propriété id.
+     * Obtient la valeur de la propriété value.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public String getID() {
-        return id;
+    public XMLGregorianCalendar getValue() {
+        return value;
     }
 
     /**
-     * Définit la valeur de la propriété id.
+     * Définit la valeur de la propriété value.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setID(String value) {
-        this.id = value;
+    public void setValue(XMLGregorianCalendar value) {
+        this.value = value;
     }
 
 }
