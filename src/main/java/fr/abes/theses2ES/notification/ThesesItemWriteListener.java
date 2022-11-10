@@ -32,6 +32,7 @@ public class ThesesItemWriteListener implements ItemWriteListener<TheseDTO> {
     public void onWriteError(Exception exception, List<? extends TheseDTO> items) {
         for (TheseDTO theseDTO : items) {
             log.error("Writer KO  pour " + theseDTO.getIdDoc());
+            log.error(exception.toString());
         }
     }
 

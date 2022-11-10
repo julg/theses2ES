@@ -106,11 +106,8 @@ public class BatchConfiguration {
         queryProvider.setSelectClause("SELECT iddoc, nnt, doc");
         queryProvider.setFromClause("from DOCUMENT");
         if (config.getWhereLimite() > 0) {
-            //queryProvider.setWhereClause("where rownum < " + config.getWhereLimite());
-            queryProvider.setWhereClause("where nnt = '2000PA010697' or nnt = '2001MNHN0022'or nnt = '2003MON30025' or nnt = '2003PA100181' or nnt = '2011AIX10218' or nnt = '2012PA010501' or nnt = '2014TOU20035' or nnt = '2014TOU20047' or nnt = '2015TOU20116' or nnt = '2020PA100137' or nnt = '2020TOU20084'");
-
-            // or nnt = '2000PA010697' or nnt = '2001MNHN0022'or nnt = '2003MON30025' or nnt = '2003PA100181' or nnt = '2011AIX10218' or nnt = '2012PA010501' or nnt = '2014TOU20035' or nnt = '2014TOU20047' or nnt = '2015TOU20116' or nnt = '2020PA100137' or nnt = '2020TOU20084'
-
+            queryProvider.setWhereClause("where rownum < " + config.getWhereLimite());
+            //queryProvider.setWhereClause("where nnt = '2000PA010697' or nnt = '2001MNHN0022'or nnt = '2003MON30025' or nnt = '2003PA100181' or nnt = '2011AIX10218' or nnt = '2012PA010501' or nnt = '2014TOU20035' or nnt = '2014TOU20047' or nnt = '2015TOU20116' or nnt = '2020PA100137' or nnt = '2020TOU20084'");
         }
         queryProvider.setSortKeys(sortByIdAsc());
         return queryProvider;
