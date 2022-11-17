@@ -20,6 +20,7 @@ import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.database.Order;
 import org.springframework.batch.item.database.PagingQueryProvider;
+import org.springframework.batch.item.database.builder.JdbcCursorItemReaderBuilder;
 import org.springframework.batch.item.database.builder.JdbcPagingItemReaderBuilder;
 import org.springframework.batch.item.database.support.OraclePagingQueryProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,17 +74,17 @@ public class BatchConfiguration {
     @Bean
     public Step stepIndexThesesDansES(@Qualifier("writerTheseDansES") ESItemWriter writerTheseDansES) {
         return stepBuilderFactory.get("stepIndexationThese").<TheseDTO, TheseDTO>chunk(config.getChunk())
-                .faultTolerant().skip(Exception.class).skipLimit(500000).listener(theseWriteListener)
+                .listener(theseWriteListener)
                 .reader(databaseItemReaderThreadSafe()).processor(processorThese()).listener(theseProcessListener)
                 .writer(writerTheseDansES).build();
-                // .taskExecutor(taskExecutor()).throttleLimit(config.getThrottle()).build();
+                //.taskExecutor(taskExecutor()).throttleLimit(config.getThrottle()).build();
     }
 
     // ---------------- TASK EXECUTOR ----------------------------
-    @Bean
+    /*@Bean
     public TaskExecutor taskExecutor() {
         return new SimpleAsyncTaskExecutor("spring_batch");
-    }
+    }*/
 
     // ---------------- READER THREAD SAFE ----------------------------
     @Bean
@@ -91,9 +92,8 @@ public class BatchConfiguration {
         log.info("début du reader these thread safe...");
 
         try {
-            return new JdbcPagingItemReaderBuilder<TheseDTO>().name("theseReader").dataSource(dataSourceLecture)
-                    .queryProvider(createQueryProvider()).rowMapper(new TheseRowMapper()).pageSize(config.getChunk())
-                    .build();
+            return new JdbcCursorItemReaderBuilder<TheseDTO>().name("theseReader").dataSource(dataSourceLecture)
+                    .sql("SELECT iddoc, nnt, doc from DOCUMENT order by iddoc asc offset 0 rows fetch next 5000 rows only").rowMapper(new TheseRowMapper()).build();
 
         } catch (Exception e) {
             log.error("erreur lors de la creation du JdbcPagingItemReader : " + e);
@@ -106,7 +106,12 @@ public class BatchConfiguration {
         queryProvider.setSelectClause("SELECT iddoc, nnt, doc");
         queryProvider.setFromClause("from DOCUMENT");
         if (config.getWhereLimite() > 0) {
+
+            //queryProvider.setWhereClause("where nnt = '2007NAN21015'");
             queryProvider.setWhereClause("where rownum < " + config.getWhereLimite());
+            Map<String,Order> orderKeys = new HashMap<>();
+            orderKeys.put("iddoc", Order.ASCENDING);
+            queryProvider.setSortKeys(orderKeys);
             //queryProvider.setWhereClause("where nnt = '2000PA010697' or nnt = '2001MNHN0022'or nnt = '2003MON30025' or nnt = '2003PA100181' or nnt = '2011AIX10218' or nnt = '2012PA010501' or nnt = '2014TOU20035' or nnt = '2014TOU20047' or nnt = '2015TOU20116' or nnt = '2020PA100137' or nnt = '2020TOU20084'");
         }
         queryProvider.setSortKeys(sortByIdAsc());

@@ -56,29 +56,6 @@ public class ESItemWriter implements ItemWriter<TheseDTO> {
         return JsonData.from(jsonProvider.createParser(input), jsonpMapper);
     }
 
-    /*@Override
-    public void write(List<? extends TheseDTO> items) throws Exception {
-
-        BulkRequest bulkRequest = new BulkRequest();
-        RequestOptions requestOptions = RequestOptions.DEFAULT;
-
-        for (TheseDTO theseDTO : items) {
-            IndexRequest request = new IndexRequest();
-            request.id(String.valueOf(theseDTO.getIdDoc()));
-            request.index("theses");
-            String jsonString = theseDTO.getJson();
-            log.info("AAAA" + jsonString);
-            ecrireDansFichier(jsonString, theseDTO.getNnt());
-            request.source(jsonString, XContentType.JSON);
-            bulkRequest.add(request);
-        }
-        BulkResponse bulkResponse = ElasticClient.getClient().bulk(bulkRequest, requestOptions);
-        if (bulkResponse.hasFailures()) {
-            int nbErrors = bulkResponse.getItems().length;
-            log.error(nbErrors + " errors.");
-        }
-    }*/
-
     private void ecrireDansFichier (String notice, String nnt) {
         try {
 

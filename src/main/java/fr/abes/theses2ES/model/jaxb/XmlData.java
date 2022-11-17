@@ -2,13 +2,12 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2022.11.08 à 03:14:28 PM CET 
+// Généré le : 2022.11.17 à 02:52:49 PM CET 
 //
 
 
 package fr.abes.theses2ES.model.jaxb;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -32,278 +31,286 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;choice>
- *         &lt;element name="star_gestion" form="unqualified">
- *           &lt;complexType>
- *             &lt;complexContent>
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 &lt;sequence>
- *                   &lt;element name="traitements" form="unqualified">
- *                     &lt;complexType>
- *                       &lt;complexContent>
- *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                           &lt;sequence>
- *                             &lt;element name="entree" form="unqualified">
- *                               &lt;complexType>
- *                                 &lt;complexContent>
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                     &lt;attribute name="agentImport" use="required" type="{http://www.w3.org/2001/XMLSchema}NMTOKEN" />
- *                                     &lt;attribute name="completudeImport" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                     &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
- *                                     &lt;attribute name="idSource" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                     &lt;attribute name="type" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                   &lt;/restriction>
- *                                 &lt;/complexContent>
- *                               &lt;/complexType>
- *                             &lt;/element>
- *                             &lt;element name="step" form="unqualified">
- *                               &lt;complexType>
- *                                 &lt;complexContent>
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                     &lt;attribute name="agentImport" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                     &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                     &lt;attribute name="idStep" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                   &lt;/restriction>
- *                                 &lt;/complexContent>
- *                               &lt;/complexType>
- *                             &lt;/element>
- *                             &lt;element name="maj" form="unqualified">
- *                               &lt;complexType>
- *                                 &lt;complexContent>
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                     &lt;attribute name="BIBL" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                     &lt;attribute name="FICH" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                     &lt;attribute name="SCOL" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                     &lt;attribute name="VALID" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                     &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
- *                                     &lt;attribute name="import" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                   &lt;/restriction>
- *                                 &lt;/complexContent>
- *                               &lt;/complexType>
- *                             &lt;/element>
- *                             &lt;element name="facile" form="unqualified">
- *                               &lt;complexType>
- *                                 &lt;complexContent>
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                     &lt;attribute name="BIBL" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                     &lt;attribute name="FICH" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                     &lt;attribute name="SCOL" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                     &lt;attribute name="VALID" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                     &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
- *                                     &lt;attribute name="import" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                     &lt;attribute name="indicFacile" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                     &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                   &lt;/restriction>
- *                                 &lt;/complexContent>
- *                               &lt;/complexType>
- *                             &lt;/element>
- *                             &lt;element name="ctrlUrl" form="unqualified">
- *                               &lt;complexType>
- *                                 &lt;complexContent>
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                     &lt;attribute name="compteIndicCtrlUrlKO" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
- *                                     &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                     &lt;attribute name="erreurUrl" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                     &lt;attribute name="indicCtrlUrl" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                   &lt;/restriction>
- *                                 &lt;/complexContent>
- *                               &lt;/complexType>
- *                             &lt;/element>
- *                             &lt;element name="remonteeArchive" form="unqualified">
- *                               &lt;complexType>
- *                                 &lt;complexContent>
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                     &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                     &lt;attribute name="indicRemonteeArchive" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                     &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                   &lt;/restriction>
- *                                 &lt;/complexContent>
- *                               &lt;/complexType>
- *                             &lt;/element>
- *                             &lt;element name="purge" form="unqualified">
- *                               &lt;complexType>
- *                                 &lt;complexContent>
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                     &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                     &lt;attribute name="indicPurge" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                   &lt;/restriction>
- *                                 &lt;/complexContent>
- *                               &lt;/complexType>
- *                             &lt;/element>
- *                             &lt;element name="invalidation" form="unqualified">
- *                               &lt;complexType>
- *                                 &lt;complexContent>
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                     &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                     &lt;attribute name="indicInvalidation" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                     &lt;attribute name="note" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                   &lt;/restriction>
- *                                 &lt;/complexContent>
- *                               &lt;/complexType>
- *                             &lt;/element>
- *                             &lt;element name="sorties" form="unqualified">
- *                               &lt;complexType>
- *                                 &lt;complexContent>
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                     &lt;sequence>
- *                                       &lt;element name="cines" form="unqualified">
- *                                         &lt;complexType>
- *                                           &lt;complexContent>
- *                                             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                               &lt;attribute name="dateCines" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
- *                                               &lt;attribute name="indicCines" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                               &lt;attribute name="numeroPAC" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
- *                                               &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                             &lt;/restriction>
- *                                           &lt;/complexContent>
- *                                         &lt;/complexType>
- *                                       &lt;/element>
- *                                       &lt;element name="sudoc" form="unqualified">
- *                                         &lt;complexType>
- *                                           &lt;complexContent>
- *                                             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                               &lt;sequence>
- *                                                 &lt;element name="RCR" form="unqualified">
- *                                                   &lt;complexType>
- *                                                     &lt;complexContent>
- *                                                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                                         &lt;attribute name="code" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
- *                                                       &lt;/restriction>
- *                                                     &lt;/complexContent>
- *                                                   &lt;/complexType>
- *                                                 &lt;/element>
- *                                                 &lt;element name="EPN" form="unqualified">
- *                                                   &lt;complexType>
- *                                                     &lt;complexContent>
- *                                                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                                       &lt;/restriction>
- *                                                     &lt;/complexContent>
- *                                                   &lt;/complexType>
- *                                                 &lt;/element>
- *                                               &lt;/sequence>
- *                                               &lt;attribute name="PPN" use="required" type="{http://www.w3.org/2001/XMLSchema}NMTOKEN" />
- *                                               &lt;attribute name="dateSudoc" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
- *                                               &lt;attribute name="indicSudoc" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                               &lt;attribute name="majSudoc" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
- *                                               &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                             &lt;/restriction>
- *                                           &lt;/complexContent>
- *                                         &lt;/complexType>
- *                                       &lt;/element>
- *                                       &lt;element name="diffusion" form="unqualified">
- *                                         &lt;complexType>
- *                                           &lt;complexContent>
- *                                             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                               &lt;sequence>
- *                                                 &lt;element name="etabDiffuseur" form="unqualified">
- *                                                   &lt;complexType>
- *                                                     &lt;complexContent>
- *                                                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                                         &lt;sequence>
- *                                                           &lt;element name="urlEtabDiffuseur" form="unqualified">
- *                                                             &lt;complexType>
- *                                                               &lt;complexContent>
- *                                                                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                                                   &lt;attribute name="majUrlEtabDiffuseur" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                                                 &lt;/restriction>
- *                                                               &lt;/complexContent>
- *                                                             &lt;/complexType>
- *                                                           &lt;/element>
- *                                                         &lt;/sequence>
- *                                                         &lt;attribute name="editeurScientifiqueLieu" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                                         &lt;attribute name="editeurScientifiqueNom" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                                         &lt;attribute name="etabDiffuseurPolEtablissement" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                                       &lt;/restriction>
- *                                                     &lt;/complexContent>
- *                                                   &lt;/complexType>
- *                                                 &lt;/element>
- *                                                 &lt;element name="abesDiffuseur" form="unqualified">
- *                                                   &lt;complexType>
- *                                                     &lt;complexContent>
- *                                                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                                         &lt;attribute name="FichEtabDiffAbesIntranet" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                                         &lt;attribute name="abesDiffuseurPolEtablissement" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                                         &lt;attribute name="dateAbesDiffuseur" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
- *                                                         &lt;attribute name="indicAbesDiffuseur" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                                         &lt;attribute name="majAbesDiffuseur" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
- *                                                         &lt;attribute name="urlAbesDiffuseur" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                                       &lt;/restriction>
- *                                                     &lt;/complexContent>
- *                                                   &lt;/complexType>
- *                                                 &lt;/element>
- *                                                 &lt;element name="ccsd" form="unqualified">
- *                                                   &lt;complexType>
- *                                                     &lt;complexContent>
- *                                                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                                         &lt;attribute name="ccsdDiffuseurPolEtablissement" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                                         &lt;attribute name="dateCcsd" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                                         &lt;attribute name="identifiantCcsd" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                                         &lt;attribute name="indicCcsd" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                                         &lt;attribute name="majCcsd" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                                         &lt;attribute name="numVersion" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                                         &lt;attribute name="pwdCcsd" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                                         &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                                         &lt;attribute name="urlCcsd" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                                       &lt;/restriction>
- *                                                     &lt;/complexContent>
- *                                                   &lt;/complexType>
- *                                                 &lt;/element>
- *                                                 &lt;element name="autresEtabDiffuseurs" form="unqualified">
- *                                                   &lt;complexType>
- *                                                     &lt;complexContent>
- *                                                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                                       &lt;/restriction>
- *                                                     &lt;/complexContent>
- *                                                   &lt;/complexType>
- *                                                 &lt;/element>
- *                                                 &lt;element name="oai" form="unqualified">
- *                                                   &lt;complexType>
- *                                                     &lt;complexContent>
- *                                                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                                         &lt;attribute name="dateOai" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
- *                                                         &lt;attribute name="indicOai" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                                         &lt;attribute name="majOai" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
- *                                                         &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                                       &lt;/restriction>
- *                                                     &lt;/complexContent>
- *                                                   &lt;/complexType>
- *                                                 &lt;/element>
- *                                               &lt;/sequence>
- *                                               &lt;attribute name="conformitePolDiffusion" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                               &lt;attribute name="restrictionTemporelleFin" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                               &lt;attribute name="restrictionTemporelleType" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                               &lt;attribute name="typeDiffusion" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                                               &lt;attribute name="urlPerenne" use="required" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
- *                                             &lt;/restriction>
- *                                           &lt;/complexContent>
- *                                         &lt;/complexType>
- *                                       &lt;/element>
- *                                     &lt;/sequence>
- *                                     &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                                   &lt;/restriction>
- *                                 &lt;/complexContent>
- *                               &lt;/complexType>
- *                             &lt;/element>
- *                           &lt;/sequence>
- *                           &lt;attribute name="scenario" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                         &lt;/restriction>
- *                       &lt;/complexContent>
- *                     &lt;/complexType>
- *                   &lt;/element>
- *                 &lt;/sequence>
- *                 &lt;attribute name="ID_THESE" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                 &lt;attribute name="codeEtab" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                 &lt;attribute name="enProd" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                 &lt;attribute name="etat" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *                 &lt;attribute name="libEtab" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                 &lt;attribute name="ppnEtab" use="required" type="{http://www.w3.org/2001/XMLSchema}NMTOKEN" />
- *                 &lt;attribute name="scenarioEtab" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *               &lt;/restriction>
- *             &lt;/complexContent>
- *           &lt;/complexType>
- *         &lt;/element>
  *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}edition"/>
  *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}thesisAdmin"/>
  *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}thesisRecord"/>
+ *         &lt;sequence>
+ *           &lt;element name="star_gestion" form="unqualified">
+ *             &lt;complexType>
+ *               &lt;complexContent>
+ *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                   &lt;sequence>
+ *                     &lt;element name="traitements" form="unqualified">
+ *                       &lt;complexType>
+ *                         &lt;complexContent>
+ *                           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                             &lt;sequence>
+ *                               &lt;element name="entree" form="unqualified">
+ *                                 &lt;complexType>
+ *                                   &lt;complexContent>
+ *                                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                       &lt;attribute name="agentImport" use="required" type="{http://www.w3.org/2001/XMLSchema}NMTOKEN" />
+ *                                       &lt;attribute name="completudeImport" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                       &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
+ *                                       &lt;attribute name="idSource" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                       &lt;attribute name="type" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                     &lt;/restriction>
+ *                                   &lt;/complexContent>
+ *                                 &lt;/complexType>
+ *                               &lt;/element>
+ *                               &lt;element name="step" form="unqualified">
+ *                                 &lt;complexType>
+ *                                   &lt;complexContent>
+ *                                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                       &lt;attribute name="agentImport" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                       &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                       &lt;attribute name="idStep" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                     &lt;/restriction>
+ *                                   &lt;/complexContent>
+ *                                 &lt;/complexType>
+ *                               &lt;/element>
+ *                               &lt;element name="maj" form="unqualified">
+ *                                 &lt;complexType>
+ *                                   &lt;complexContent>
+ *                                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                       &lt;attribute name="BIBL" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                       &lt;attribute name="FICH" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                       &lt;attribute name="SCOL" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                       &lt;attribute name="VALID" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                       &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
+ *                                       &lt;attribute name="import" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                     &lt;/restriction>
+ *                                   &lt;/complexContent>
+ *                                 &lt;/complexType>
+ *                               &lt;/element>
+ *                               &lt;element name="facile" form="unqualified">
+ *                                 &lt;complexType>
+ *                                   &lt;complexContent>
+ *                                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                       &lt;attribute name="BIBL" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                       &lt;attribute name="FICH" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                       &lt;attribute name="SCOL" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                       &lt;attribute name="VALID" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                       &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
+ *                                       &lt;attribute name="import" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                       &lt;attribute name="indicFacile" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                       &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                     &lt;/restriction>
+ *                                   &lt;/complexContent>
+ *                                 &lt;/complexType>
+ *                               &lt;/element>
+ *                               &lt;element name="ctrlUrl" form="unqualified">
+ *                                 &lt;complexType>
+ *                                   &lt;complexContent>
+ *                                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                       &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                       &lt;attribute name="erreurUrl" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                       &lt;attribute name="indicCtrlUrl" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                     &lt;/restriction>
+ *                                   &lt;/complexContent>
+ *                                 &lt;/complexType>
+ *                               &lt;/element>
+ *                               &lt;element name="remonteeArchive" form="unqualified">
+ *                                 &lt;complexType>
+ *                                   &lt;complexContent>
+ *                                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                       &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                       &lt;attribute name="indicRemonteeArchive" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                       &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                     &lt;/restriction>
+ *                                   &lt;/complexContent>
+ *                                 &lt;/complexType>
+ *                               &lt;/element>
+ *                               &lt;element name="purge" form="unqualified">
+ *                                 &lt;complexType>
+ *                                   &lt;complexContent>
+ *                                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                       &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                       &lt;attribute name="indicPurge" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                     &lt;/restriction>
+ *                                   &lt;/complexContent>
+ *                                 &lt;/complexType>
+ *                               &lt;/element>
+ *                               &lt;element name="invalidation" form="unqualified">
+ *                                 &lt;complexType>
+ *                                   &lt;complexContent>
+ *                                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                       &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                       &lt;attribute name="indicInvalidation" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                       &lt;attribute name="note" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                     &lt;/restriction>
+ *                                   &lt;/complexContent>
+ *                                 &lt;/complexType>
+ *                               &lt;/element>
+ *                               &lt;element name="sorties" form="unqualified">
+ *                                 &lt;complexType>
+ *                                   &lt;complexContent>
+ *                                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                       &lt;sequence>
+ *                                         &lt;element name="cines" form="unqualified">
+ *                                           &lt;complexType>
+ *                                             &lt;complexContent>
+ *                                               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                                 &lt;attribute name="dateCines" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
+ *                                                 &lt;attribute name="indicCines" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                                 &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                               &lt;/restriction>
+ *                                             &lt;/complexContent>
+ *                                           &lt;/complexType>
+ *                                         &lt;/element>
+ *                                         &lt;element name="sudoc" form="unqualified">
+ *                                           &lt;complexType>
+ *                                             &lt;complexContent>
+ *                                               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                                 &lt;sequence>
+ *                                                   &lt;element name="RCR" form="unqualified">
+ *                                                     &lt;complexType>
+ *                                                       &lt;complexContent>
+ *                                                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                                           &lt;attribute name="code" use="required" type="{http://www.w3.org/2001/XMLSchema}NMTOKEN" />
+ *                                                         &lt;/restriction>
+ *                                                       &lt;/complexContent>
+ *                                                     &lt;/complexType>
+ *                                                   &lt;/element>
+ *                                                   &lt;element name="EPN" form="unqualified">
+ *                                                     &lt;complexType>
+ *                                                       &lt;complexContent>
+ *                                                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                                         &lt;/restriction>
+ *                                                       &lt;/complexContent>
+ *                                                     &lt;/complexType>
+ *                                                   &lt;/element>
+ *                                                 &lt;/sequence>
+ *                                                 &lt;attribute name="PPN" use="required" type="{http://www.w3.org/2001/XMLSchema}NMTOKEN" />
+ *                                                 &lt;attribute name="dateSudoc" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
+ *                                                 &lt;attribute name="indicSudoc" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                                 &lt;attribute name="majSudoc" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
+ *                                                 &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                               &lt;/restriction>
+ *                                             &lt;/complexContent>
+ *                                           &lt;/complexType>
+ *                                         &lt;/element>
+ *                                         &lt;element name="diffusion" form="unqualified">
+ *                                           &lt;complexType>
+ *                                             &lt;complexContent>
+ *                                               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                                 &lt;sequence>
+ *                                                   &lt;element name="etabDiffuseur" form="unqualified">
+ *                                                     &lt;complexType>
+ *                                                       &lt;complexContent>
+ *                                                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                                           &lt;sequence>
+ *                                                             &lt;element name="urlEtabDiffuseur" form="unqualified">
+ *                                                               &lt;complexType>
+ *                                                                 &lt;complexContent>
+ *                                                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                                                     &lt;attribute name="majUrlEtabDiffuseur" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                                                   &lt;/restriction>
+ *                                                                 &lt;/complexContent>
+ *                                                               &lt;/complexType>
+ *                                                             &lt;/element>
+ *                                                           &lt;/sequence>
+ *                                                           &lt;attribute name="editeurScientifiqueLieu" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                                           &lt;attribute name="editeurScientifiqueNom" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                                           &lt;attribute name="etabDiffuseurPolEtablissement" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                                         &lt;/restriction>
+ *                                                       &lt;/complexContent>
+ *                                                     &lt;/complexType>
+ *                                                   &lt;/element>
+ *                                                   &lt;element name="abesDiffuseur" form="unqualified">
+ *                                                     &lt;complexType>
+ *                                                       &lt;complexContent>
+ *                                                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                                           &lt;attribute name="FichEtabDiffAbesIntranet" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                                           &lt;attribute name="abesDiffuseurPolEtablissement" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                                           &lt;attribute name="dateAbesDiffuseur" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
+ *                                                           &lt;attribute name="indicAbesDiffuseur" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                                           &lt;attribute name="majAbesDiffuseur" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
+ *                                                           &lt;attribute name="urlAbesDiffuseur" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                                         &lt;/restriction>
+ *                                                       &lt;/complexContent>
+ *                                                     &lt;/complexType>
+ *                                                   &lt;/element>
+ *                                                   &lt;element name="ccsd" form="unqualified">
+ *                                                     &lt;complexType>
+ *                                                       &lt;complexContent>
+ *                                                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                                           &lt;attribute name="ccsdDiffuseurPolEtablissement" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                                           &lt;attribute name="dateCcsd" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                                           &lt;attribute name="identifiantCcsd" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                                           &lt;attribute name="indicCcsd" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                                           &lt;attribute name="majCcsd" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                                           &lt;attribute name="numVersion" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                                           &lt;attribute name="pwdCcsd" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                                           &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                                           &lt;attribute name="urlCcsd" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                                         &lt;/restriction>
+ *                                                       &lt;/complexContent>
+ *                                                     &lt;/complexType>
+ *                                                   &lt;/element>
+ *                                                   &lt;element name="autresEtabDiffuseurs" form="unqualified">
+ *                                                     &lt;complexType>
+ *                                                       &lt;complexContent>
+ *                                                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                                         &lt;/restriction>
+ *                                                       &lt;/complexContent>
+ *                                                     &lt;/complexType>
+ *                                                   &lt;/element>
+ *                                                   &lt;element name="oai" form="unqualified">
+ *                                                     &lt;complexType>
+ *                                                       &lt;complexContent>
+ *                                                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                                           &lt;attribute name="dateOai" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
+ *                                                           &lt;attribute name="indicOai" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                                           &lt;attribute name="majOai" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
+ *                                                           &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                                         &lt;/restriction>
+ *                                                       &lt;/complexContent>
+ *                                                     &lt;/complexType>
+ *                                                   &lt;/element>
+ *                                                 &lt;/sequence>
+ *                                                 &lt;attribute name="conformitePolDiffusion" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                                 &lt;attribute name="restrictionTemporelleFin" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                                 &lt;attribute name="restrictionTemporelleType" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                                 &lt;attribute name="typeDiffusion" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                                                 &lt;attribute name="urlPerenne" use="required" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
+ *                                               &lt;/restriction>
+ *                                             &lt;/complexContent>
+ *                                           &lt;/complexType>
+ *                                         &lt;/element>
+ *                                       &lt;/sequence>
+ *                                       &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                     &lt;/restriction>
+ *                                   &lt;/complexContent>
+ *                                 &lt;/complexType>
+ *                               &lt;/element>
+ *                             &lt;/sequence>
+ *                             &lt;attribute name="scenario" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                           &lt;/restriction>
+ *                         &lt;/complexContent>
+ *                       &lt;/complexType>
+ *                     &lt;/element>
+ *                   &lt;/sequence>
+ *                   &lt;attribute name="ID_THESE" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                   &lt;attribute name="codeEtab" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                   &lt;attribute name="enProd" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                   &lt;attribute name="etat" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                   &lt;attribute name="libEtab" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                   &lt;attribute name="ppnEtab" use="required" type="{http://www.w3.org/2001/XMLSchema}NMTOKEN" />
+ *                   &lt;attribute name="scenarioEtab" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *                 &lt;/restriction>
+ *               &lt;/complexContent>
+ *             &lt;/complexType>
+ *           &lt;/element>
+ *           &lt;element name="step_gestion" form="unqualified">
+ *             &lt;complexType>
+ *               &lt;complexContent>
+ *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;/restriction>
+ *               &lt;/complexContent>
+ *             &lt;/complexType>
+ *           &lt;/element>
+ *         &lt;/sequence>
  *       &lt;/choice>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -314,43 +321,22 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "starGestion",
     "edition",
     "thesisAdmin",
-    "thesisRecord"
+    "thesisRecord",
+    "starGestion",
+    "stepGestion"
 })
 @XmlRootElement(name = "xmlData", namespace = "http://www.loc.gov/METS/")
 public class XmlData {
 
-    @XmlElement(name = "star_gestion", namespace = "")
-    protected XmlData.StarGestion starGestion;
     protected Edition edition;
     protected ThesisAdmin thesisAdmin;
     protected ThesisRecord thesisRecord;
-
-    /**
-     * Obtient la valeur de la propriété starGestion.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XmlData.StarGestion }
-     *     
-     */
-    public XmlData.StarGestion getStarGestion() {
-        return starGestion;
-    }
-
-    /**
-     * Définit la valeur de la propriété starGestion.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XmlData.StarGestion }
-     *     
-     */
-    public void setStarGestion(XmlData.StarGestion value) {
-        this.starGestion = value;
-    }
+    @XmlElement(name = "star_gestion", namespace = "")
+    protected XmlData.StarGestion starGestion;
+    @XmlElement(name = "step_gestion", namespace = "")
+    protected XmlData.StepGestion stepGestion;
 
     /**
      * Obtient la valeur de la propriété edition.
@@ -422,6 +408,54 @@ public class XmlData {
      */
     public void setThesisRecord(ThesisRecord value) {
         this.thesisRecord = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété starGestion.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XmlData.StarGestion }
+     *     
+     */
+    public XmlData.StarGestion getStarGestion() {
+        return starGestion;
+    }
+
+    /**
+     * Définit la valeur de la propriété starGestion.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XmlData.StarGestion }
+     *     
+     */
+    public void setStarGestion(XmlData.StarGestion value) {
+        this.starGestion = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété stepGestion.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XmlData.StepGestion }
+     *     
+     */
+    public XmlData.StepGestion getStepGestion() {
+        return stepGestion;
+    }
+
+    /**
+     * Définit la valeur de la propriété stepGestion.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XmlData.StepGestion }
+     *     
+     */
+    public void setStepGestion(XmlData.StepGestion value) {
+        this.stepGestion = value;
     }
 
 
@@ -498,7 +532,6 @@ public class XmlData {
      *                     &lt;complexType>
      *                       &lt;complexContent>
      *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *                           &lt;attribute name="compteIndicCtrlUrlKO" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
      *                           &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
      *                           &lt;attribute name="erreurUrl" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
      *                           &lt;attribute name="indicCtrlUrl" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
@@ -549,7 +582,6 @@ public class XmlData {
      *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *                                     &lt;attribute name="dateCines" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
      *                                     &lt;attribute name="indicCines" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
-     *                                     &lt;attribute name="numeroPAC" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
      *                                     &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
      *                                   &lt;/restriction>
      *                                 &lt;/complexContent>
@@ -564,7 +596,7 @@ public class XmlData {
      *                                         &lt;complexType>
      *                                           &lt;complexContent>
      *                                             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *                                               &lt;attribute name="code" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
+     *                                               &lt;attribute name="code" use="required" type="{http://www.w3.org/2001/XMLSchema}NMTOKEN" />
      *                                             &lt;/restriction>
      *                                           &lt;/complexContent>
      *                                         &lt;/complexType>
@@ -999,7 +1031,6 @@ public class XmlData {
          *           &lt;complexType>
          *             &lt;complexContent>
          *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-         *                 &lt;attribute name="compteIndicCtrlUrlKO" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
          *                 &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
          *                 &lt;attribute name="erreurUrl" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
          *                 &lt;attribute name="indicCtrlUrl" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
@@ -1050,7 +1081,6 @@ public class XmlData {
          *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
          *                           &lt;attribute name="dateCines" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
          *                           &lt;attribute name="indicCines" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
-         *                           &lt;attribute name="numeroPAC" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
          *                           &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
          *                         &lt;/restriction>
          *                       &lt;/complexContent>
@@ -1065,7 +1095,7 @@ public class XmlData {
          *                               &lt;complexType>
          *                                 &lt;complexContent>
          *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-         *                                     &lt;attribute name="code" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
+         *                                     &lt;attribute name="code" use="required" type="{http://www.w3.org/2001/XMLSchema}NMTOKEN" />
          *                                   &lt;/restriction>
          *                                 &lt;/complexContent>
          *                               &lt;/complexType>
@@ -1478,7 +1508,6 @@ public class XmlData {
              * &lt;complexType>
              *   &lt;complexContent>
              *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-             *       &lt;attribute name="compteIndicCtrlUrlKO" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
              *       &lt;attribute name="date" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
              *       &lt;attribute name="erreurUrl" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
              *       &lt;attribute name="indicCtrlUrl" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
@@ -1493,8 +1522,6 @@ public class XmlData {
             @XmlType(name = "")
             public static class CtrlUrl {
 
-                @XmlAttribute(name = "compteIndicCtrlUrlKO", required = true)
-                protected BigInteger compteIndicCtrlUrlKO;
                 @XmlAttribute(name = "date", required = true)
                 @XmlSchemaType(name = "anySimpleType")
                 protected String date;
@@ -1506,30 +1533,6 @@ public class XmlData {
                 @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
                 @XmlSchemaType(name = "NCName")
                 protected String indicCtrlUrl;
-
-                /**
-                 * Obtient la valeur de la propriété compteIndicCtrlUrlKO.
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link BigInteger }
-                 *     
-                 */
-                public BigInteger getCompteIndicCtrlUrlKO() {
-                    return compteIndicCtrlUrlKO;
-                }
-
-                /**
-                 * Définit la valeur de la propriété compteIndicCtrlUrlKO.
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link BigInteger }
-                 *     
-                 */
-                public void setCompteIndicCtrlUrlKO(BigInteger value) {
-                    this.compteIndicCtrlUrlKO = value;
-                }
 
                 /**
                  * Obtient la valeur de la propriété date.
@@ -2539,7 +2542,6 @@ public class XmlData {
              *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
              *                 &lt;attribute name="dateCines" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
              *                 &lt;attribute name="indicCines" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
-             *                 &lt;attribute name="numeroPAC" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
              *                 &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
              *               &lt;/restriction>
              *             &lt;/complexContent>
@@ -2554,7 +2556,7 @@ public class XmlData {
              *                     &lt;complexType>
              *                       &lt;complexContent>
              *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-             *                           &lt;attribute name="code" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
+             *                           &lt;attribute name="code" use="required" type="{http://www.w3.org/2001/XMLSchema}NMTOKEN" />
              *                         &lt;/restriction>
              *                       &lt;/complexContent>
              *                     &lt;/complexType>
@@ -2800,7 +2802,6 @@ public class XmlData {
                  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
                  *       &lt;attribute name="dateCines" use="required" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
                  *       &lt;attribute name="indicCines" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
-                 *       &lt;attribute name="numeroPAC" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
                  *       &lt;attribute name="trace" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
                  *     &lt;/restriction>
                  *   &lt;/complexContent>
@@ -2820,8 +2821,6 @@ public class XmlData {
                     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
                     @XmlSchemaType(name = "NCName")
                     protected String indicCines;
-                    @XmlAttribute(name = "numeroPAC", required = true)
-                    protected BigInteger numeroPAC;
                     @XmlAttribute(name = "trace", required = true)
                     @XmlSchemaType(name = "anySimpleType")
                     protected String trace;
@@ -2872,30 +2871,6 @@ public class XmlData {
                      */
                     public void setIndicCines(String value) {
                         this.indicCines = value;
-                    }
-
-                    /**
-                     * Obtient la valeur de la propriété numeroPAC.
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link BigInteger }
-                     *     
-                     */
-                    public BigInteger getNumeroPAC() {
-                        return numeroPAC;
-                    }
-
-                    /**
-                     * Définit la valeur de la propriété numeroPAC.
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link BigInteger }
-                     *     
-                     */
-                    public void setNumeroPAC(BigInteger value) {
-                        this.numeroPAC = value;
                     }
 
                     /**
@@ -4151,7 +4126,7 @@ public class XmlData {
                  *           &lt;complexType>
                  *             &lt;complexContent>
                  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-                 *                 &lt;attribute name="code" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
+                 *                 &lt;attribute name="code" use="required" type="{http://www.w3.org/2001/XMLSchema}NMTOKEN" />
                  *               &lt;/restriction>
                  *             &lt;/complexContent>
                  *           &lt;/complexType>
@@ -4408,7 +4383,7 @@ public class XmlData {
                      * &lt;complexType>
                      *   &lt;complexContent>
                      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-                     *       &lt;attribute name="code" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
+                     *       &lt;attribute name="code" use="required" type="{http://www.w3.org/2001/XMLSchema}NMTOKEN" />
                      *     &lt;/restriction>
                      *   &lt;/complexContent>
                      * &lt;/complexType>
@@ -4425,7 +4400,9 @@ public class XmlData {
                         @XmlValue
                         protected String content;
                         @XmlAttribute(name = "code", required = true)
-                        protected BigInteger code;
+                        @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+                        @XmlSchemaType(name = "NMTOKEN")
+                        protected String code;
 
                         /**
                          * Obtient la valeur de la propriété content.
@@ -4456,10 +4433,10 @@ public class XmlData {
                          * 
                          * @return
                          *     possible object is
-                         *     {@link BigInteger }
+                         *     {@link String }
                          *     
                          */
-                        public BigInteger getCode() {
+                        public String getCode() {
                             return code;
                         }
 
@@ -4468,10 +4445,10 @@ public class XmlData {
                          * 
                          * @param value
                          *     allowed object is
-                         *     {@link BigInteger }
+                         *     {@link String }
                          *     
                          */
-                        public void setCode(BigInteger value) {
+                        public void setCode(String value) {
                             this.code = value;
                         }
 
@@ -4590,6 +4567,30 @@ public class XmlData {
             }
 
         }
+
+    }
+
+
+    /**
+     * <p>Classe Java pour anonymous complex type.
+     * 
+     * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "")
+    public static class StepGestion {
+
 
     }
 

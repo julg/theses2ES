@@ -2,12 +2,14 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2022.11.08 à 03:14:28 PM CET 
+// Généré le : 2022.11.17 à 02:52:49 PM CET 
 //
 
 
 package fr.abes.theses2ES.model.jaxb;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -25,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.loc.gov/METS/}techMD"/>
+ *         &lt;element ref="{http://www.loc.gov/METS/}techMD" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -42,30 +44,35 @@ import javax.xml.bind.annotation.XmlType;
 public class AmdSec {
 
     @XmlElement(namespace = "http://www.loc.gov/METS/", required = true)
-    protected TechMD techMD;
+    protected List<TechMD> techMD;
 
     /**
-     * Obtient la valeur de la propriété techMD.
+     * Gets the value of the techMD property.
      * 
-     * @return
-     *     possible object is
-     *     {@link TechMD }
-     *     
-     */
-    public TechMD getTechMD() {
-        return techMD;
-    }
-
-    /**
-     * Définit la valeur de la propriété techMD.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the techMD property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link TechMD }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getTechMD().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link TechMD }
+     * 
+     * 
      */
-    public void setTechMD(TechMD value) {
-        this.techMD = value;
+    public List<TechMD> getTechMD() {
+        if (techMD == null) {
+            techMD = new ArrayList<TechMD>();
+        }
+        return this.techMD;
     }
 
 }

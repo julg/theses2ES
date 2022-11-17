@@ -56,21 +56,36 @@
         <!-- note : oracle xdb and ojdbc6 must be installed manually or available in a local repository -->
 
         <dependency>
-            <groupId>oracle.ojdbc</groupId>
-            <artifactId>xdb6</artifactId>
-            <version>11.2.0.3.0</version>
+
+            <groupId>oracle.ojdbc8</groupId>
+
+            <artifactId>xdb</artifactId>
+
+            <version>21.6.0.0.1</version>
+
         </dependency>
+
         <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>11.2.0.3</version>
-        </dependency>
-        <dependency>
-            <groupId>oracle.ojdbc</groupId>
+
+            <groupId>oracle.ojdbc8</groupId>
+
             <artifactId>xmlparserv2</artifactId>
-            <version>11.2.0.3.0</version>
-            <scope>runtime</scope>
+
+            <version>21.6.0.0.1</version>
+
         </dependency>
+
+        <dependency>
+
+            <groupId>oracle.ojdbc8</groupId>
+
+            <artifactId>ojdbc8</artifactId>
+
+            <version>21.6.0.0.1</version>
+
+        </dependency>
+
+
         <dependency>
             <groupId>xalan</groupId>
             <artifactId>xalan</artifactId>
@@ -119,30 +134,64 @@
             </plugin>
         </plugins>
     </build>
-	<distributionManagement>
-		<repository>
-			<id>artifactory-release</id>
-			<url>https://artifactory.v3.abes.fr/artifactory/libs-release-local</url>
-		</repository>
-		<snapshotRepository>
-			<id>artifactory-snapshot</id>
-			<url>https://artifactory.v3.abes.fr/artifactory/libs-snapshot-local</url>
-		</snapshotRepository>
-	</distributionManagement>
-	<repositories>
-		<repository>
-			<id>artifactory-public</id>
-			<name>artifactory-public</name>
-			<url>https://artifactory.v3.abes.fr/artifactory/maven-public/</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>artifactory-public</id>
-			<name>artifactory-public</name>
-			<url>https://artifactory.v3.abes.fr/artifactory/maven-public/</url>
-		</pluginRepository>
-	</pluginRepositories>
+
+    <distributionManagement>
+
+        <repository>
+
+            <id>artifactory-release</id>
+
+            <url>https://artifactory.abes.fr/artifactory/libs-release-local</url>
+
+        </repository>
+
+        <snapshotRepository>
+
+            <id>artifactory-snapshot</id>
+
+            <url>https://artifactory.abes.fr/artifactory/libs-snapshot-local</url>
+
+        </snapshotRepository>
+
+    </distributionManagement>
+
+
+
+    <repositories>
+
+        <repository>
+
+            <id>artifactory-public</id>
+
+            <name>artifactory-public</name>
+
+            <url>https://artifactory.abes.fr/artifactory/maven-public/</url>
+
+            <releases>
+
+                <updatePolicy>always</updatePolicy>
+
+            </releases>
+
+        </repository>
+
+    </repositories>
+
+    <pluginRepositories>
+
+        <pluginRepository>
+
+            <id>artifactory-public</id>
+
+            <name>artifactory-public</name>
+
+            <url>https://artifactory.abes.fr/artifactory/maven-public/</url>
+
+        </pluginRepository>
+
+    </pluginRepositories>
+
+
     <properties>
         <java.version>11</java.version>
         <elasticsearch.version>7.4.0</elasticsearch.version>

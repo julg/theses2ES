@@ -2,13 +2,12 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2022.11.08 à 03:14:28 PM CET 
+// Généré le : 2022.11.17 à 02:52:49 PM CET 
 //
 
 
 package fr.abes.theses2ES.model.jaxb;
 
-import java.math.BigInteger;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
@@ -387,14 +386,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MetsMdWrap }
-     * 
-     */
-    public MetsMdWrap createMetsMdWrap() {
-        return new MetsMdWrap();
-    }
-
-    /**
      * Create an instance of {@link Agent }
      * 
      */
@@ -416,6 +407,14 @@ public class ObjectFactory {
      */
     public MdWrap createMdWrap() {
         return new MdWrap();
+    }
+
+    /**
+     * Create an instance of {@link XmlData.StepGestion }
+     * 
+     */
+    public XmlData.StepGestion createXmlDataStepGestion() {
+        return new XmlData.StepGestion();
     }
 
     /**
@@ -623,12 +622,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.theses.fr/namespace/tefudoc", name = "rcr")
-    public JAXBElement<BigInteger> createRcr(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Rcr_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    public JAXBElement<String> createRcr(String value) {
+        return new JAXBElement<String>(_Rcr_QNAME, String.class, null, value);
     }
 
     /**

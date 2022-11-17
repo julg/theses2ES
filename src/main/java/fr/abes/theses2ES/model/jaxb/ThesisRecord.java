@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2022.11.08 à 03:14:28 PM CET 
+// Généré le : 2022.11.17 à 02:52:49 PM CET 
 //
 
 
@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{http://www.abes.fr/abes/documents/tef}sujetRameau"/>
  *         &lt;element ref="{http://purl.org/dc/terms/}abstract" maxOccurs="unbounded"/>
  *         &lt;element ref="{http://purl.org/dc/elements/1.1/}type" maxOccurs="unbounded"/>
- *         &lt;element ref="{http://purl.org/dc/elements/1.1/}language"/>
+ *         &lt;element ref="{http://purl.org/dc/elements/1.1/}language" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -68,7 +68,7 @@ public class ThesisRecord {
     @XmlElement(namespace = "http://purl.org/dc/elements/1.1/", required = true)
     protected List<Type> type;
     @XmlElement(namespace = "http://purl.org/dc/elements/1.1/", required = true)
-    protected Language language;
+    protected List<Language> language;
 
     /**
      * Obtient la valeur de la propriété title.
@@ -235,27 +235,32 @@ public class ThesisRecord {
     }
 
     /**
-     * Obtient la valeur de la propriété language.
+     * Gets the value of the language property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Language }
-     *     
-     */
-    public Language getLanguage() {
-        return language;
-    }
-
-    /**
-     * Définit la valeur de la propriété language.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the language property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Language }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getLanguage().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Language }
+     * 
+     * 
      */
-    public void setLanguage(Language value) {
-        this.language = value;
+    public List<Language> getLanguage() {
+        if (language == null) {
+            language = new ArrayList<Language>();
+        }
+        return this.language;
     }
 
 }

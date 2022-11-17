@@ -2,13 +2,12 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2022.11.08 à 03:14:28 PM CET 
+// Généré le : 2022.11.17 à 02:52:49 PM CET 
 //
 
 
 package fr.abes.theses2ES.model.jaxb;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -50,7 +49,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class Exemplaire {
 
     @XmlElement(namespace = "http://www.theses.fr/namespace/tefudoc", required = true)
-    protected BigInteger rcr;
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlSchemaType(name = "NMTOKEN")
+    protected String rcr;
     @XmlElement(namespace = "http://www.theses.fr/namespace/tefudoc", required = true)
     protected Cote cote;
     @XmlElement(namespace = "http://www.theses.fr/namespace/tefudoc", required = true)
@@ -63,10 +64,10 @@ public class Exemplaire {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getRcr() {
+    public String getRcr() {
         return rcr;
     }
 
@@ -75,10 +76,10 @@ public class Exemplaire {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setRcr(BigInteger value) {
+    public void setRcr(String value) {
         this.rcr = value;
     }
 
