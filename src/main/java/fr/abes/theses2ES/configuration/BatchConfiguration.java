@@ -1,11 +1,8 @@
 package fr.abes.theses2ES.configuration;
 
 import fr.abes.theses2ES.dto.TheseDTO;
-import fr.abes.theses2ES.dto.TheseRowMapper;
-import fr.abes.theses2ES.notification.JobTheseCompletionNotificationListener;
 import fr.abes.theses2ES.processor.TheseItemProcessor;
 import fr.abes.theses2ES.utils.XMLJsonMarshalling;
-import fr.abes.theses2ES.writer.ESItemWriter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.ItemProcessListener;
 import org.springframework.batch.core.ItemWriteListener;
@@ -15,22 +12,18 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
-import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
+import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.Order;
 import org.springframework.batch.item.database.PagingQueryProvider;
-import org.springframework.batch.item.database.builder.JdbcCursorItemReaderBuilder;
-import org.springframework.batch.item.database.builder.JdbcPagingItemReaderBuilder;
 import org.springframework.batch.item.database.support.OraclePagingQueryProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.task.SimpleAsyncTaskExecutor;
-import org.springframework.core.task.TaskExecutor;
 
-import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,11 +36,10 @@ public class BatchConfiguration {
     protected JobBuilderFactory jobs;
 
     @Autowired
-    protected StepBuilderFactory stepBuilderFactory;
+    protected StepBuilderFactory steps;
 
-    @Autowired
-    @Qualifier("dataSourceLecture")
-    protected DataSource dataSourceLecture;
+    @Value("${job.chunk}")
+    private Integer chunkSize;
 
     @Autowired
     private JobConfig config;
@@ -61,23 +53,41 @@ public class BatchConfiguration {
 
     // ---------- JOB ---------------------------------------------
 
-    @Bean
+/*    @Bean
     public Job jobIndexationThesesDansES(Step stepIndexThesesDansES, JobRepository jobRepository,
             JobTheseCompletionNotificationListener listener) {
         log.info("debut du job indexation des theses dans ES...");
 
         return jobs.get("indexationThesesDansES").repository(jobRepository).incrementer(new RunIdIncrementer())
                 .listener(listener).flow(stepIndexThesesDansES).end().build();
-    }
+    }*/
 
-    // ---------- STEP --------------------------------------------
     @Bean
+    public Job indexerDansEs(@Qualifier("indexerDansEsReader") ItemReader reader,
+                             @Qualifier("processorThese") ItemProcessor processor,
+                             @Qualifier("ESItemWriter") ItemWriter writer) {
+        log.info("debut du job indexation des theses dans ES...");
+
+        return jobs
+                .get("indexerDansEs").incrementer(new RunIdIncrementer())
+                .start(genericStep(reader, processor,writer))
+                .build();
+    }
+    // ---------- STEP --------------------------------------------
+/*    @Bean
     public Step stepIndexThesesDansES(@Qualifier("writerTheseDansES") ESItemWriter writerTheseDansES) {
-        return stepBuilderFactory.get("stepIndexationThese").<TheseDTO, TheseDTO>chunk(config.getChunk())
+        return steps.get("stepIndexationThese").<TheseDTO, TheseDTO>chunk(config.getChunk())
                 .listener(theseWriteListener)
                 .reader(databaseItemReaderThreadSafe()).processor(processorThese()).listener(theseProcessListener)
                 .writer(writerTheseDansES).build();
-                //.taskExecutor(taskExecutor()).throttleLimit(config.getThrottle()).build();
+    }*/
+
+    private Step genericStep(ItemReader reader, ItemProcessor processor, ItemWriter writer) {
+        return steps.get("genericStep").chunk(chunkSize)
+                .reader(reader)
+                .processor(processor)
+                .writer(writer)
+                .build();
     }
 
     // ---------------- TASK EXECUTOR ----------------------------
@@ -92,8 +102,9 @@ public class BatchConfiguration {
         log.info("début du reader these thread safe...");
 
         try {
-            return new JdbcCursorItemReaderBuilder<TheseDTO>().name("theseReader").dataSource(dataSourceLecture)
-                    .sql("SELECT iddoc, nnt, doc from DOCUMENT order by iddoc asc offset 0 rows fetch next 5000 rows only").rowMapper(new TheseRowMapper()).build();
+            return null;
+            //return new JdbcCursorItemReaderBuilder<TheseDTO>().name("theseReader").dataSource(dataSourceLecture)
+             //       .sql("SELECT iddoc, nnt, doc from DOCUMENT order by iddoc asc offset 0 rows fetch next 5000 rows only").rowMapper(new TheseRowMapper()).build();
 
         } catch (Exception e) {
             log.error("erreur lors de la creation du JdbcPagingItemReader : " + e);
@@ -128,13 +139,6 @@ public class BatchConfiguration {
     @Bean
     public ItemProcessor<TheseDTO, TheseDTO> processorThese() {
         return new TheseItemProcessor();
-    }
-
-    // ----------------- WRITER -------------------------------------
-    @Bean
-    @Qualifier("writerTheseDansES")
-    public ESItemWriter writerTheseDansES() {
-        return new ESItemWriter();
     }
 
     // --------------------- Utilitaires --------------------------------

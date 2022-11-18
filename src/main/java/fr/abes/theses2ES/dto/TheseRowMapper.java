@@ -15,7 +15,7 @@ public class TheseRowMapper implements RowMapper<TheseDTO> {
     public TheseDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
 
         try {
-            TheseDTO these = new TheseDTO();
+            TheseDTO these = TheseDTO.builder().build();
             OracleResultSet rsOra = (OracleResultSet) rs;
 
             these.setIdDoc(rsOra.getInt("iddoc"));
