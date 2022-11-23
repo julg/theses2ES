@@ -31,8 +31,13 @@ public class JobTheseCompletionNotificationListener extends JobExecutionListener
 
     @Override
     public void beforeJob(JobExecution jobExecution) {
-        /*log.info("Load elastic client");
-        ElasticClient.loadClient(elasticConfig.getHostname(), elasticConfig.getPort(), elasticConfig.getScheme());*/
+        log.info("Load elastic client");
+        try {
+            ElasticClient.chargeClient(elasticConfig.getHostname(), elasticConfig.getPort(), elasticConfig.getScheme(), elasticConfig.getUserName(), elasticConfig.getPassword(), elasticConfig.getProtocol());
+        } catch (Exception e) {
+            log.error("pb lors du chargement du client ES : " + e.toString());
+            throw new RuntimeException(e);
+        }
         log.info("Debut du job d'indexation des theses");
         start = System.currentTimeMillis();
     }
@@ -44,12 +49,6 @@ public class JobTheseCompletionNotificationListener extends JobExecutionListener
         if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
             log.info("job indexation des theses termine");
         }
-        /*try {
-            ElasticClient.getClient().close();
-        } catch (IOException e) {
-            log.error("Erreur lors de la fermeture du client elastic : ");
-            log.error(e.getMessage());
-        }*/
 
         log.info(millisecondsToReadeable(duration));
     }

@@ -10,7 +10,6 @@ import fr.abes.theses2ES.dto.TheseDTO;
 import jakarta.json.spi.JsonProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemWriter;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.*;
 import java.util.List;
@@ -18,15 +17,13 @@ import java.util.List;
 @Slf4j
 public class ESItemWriter implements ItemWriter<TheseDTO> {
 
-    @Autowired
-    ElasticClient elasticClient;
     @Override
     public void write(List<? extends TheseDTO> items) throws Exception {
 
         BulkRequest.Builder br = new BulkRequest.Builder();
 
         for (TheseDTO theseDTO : items) {
-            JsonData json = readJson(new ByteArrayInputStream(theseDTO.getJson().getBytes()), this.elasticClient.getElasticsearchClient());
+            JsonData json = readJson(new ByteArrayInputStream(theseDTO.getJson().getBytes()), ElasticClient.getElasticsearchClient());
 
             br.operations(op -> op
                     .index(idx -> idx
@@ -37,7 +34,7 @@ public class ESItemWriter implements ItemWriter<TheseDTO> {
             );
         }
 
-        BulkResponse result = this.elasticClient.getElasticsearchClient().bulk(br.build());
+        BulkResponse result = ElasticClient.getElasticsearchClient().bulk(br.build());
 
         if (result.errors()) {
             log.error("Erreurs dans le bulk : ");

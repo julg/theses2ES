@@ -72,11 +72,11 @@ public class BatchConfiguration {
 
     // ---------- STEP --------------------------------------------
     @Bean
-    public Step stepIndexThesesDansES(@Qualifier("writerTheseDansES") ESItemWriter writerTheseDansES) {
+    public Step stepIndexThesesDansES() {
         return stepBuilderFactory.get("stepIndexationThese").<TheseDTO, TheseDTO>chunk(config.getChunk())
                 .listener(theseWriteListener)
                 .reader(databaseItemReaderThreadSafe()).processor(processorThese()).listener(theseProcessListener)
-                .writer(writerTheseDansES).build();
+                .writer(writerTheseDansES()).build();
                 //.taskExecutor(taskExecutor()).throttleLimit(config.getThrottle()).build();
     }
 
@@ -132,7 +132,6 @@ public class BatchConfiguration {
 
     // ----------------- WRITER -------------------------------------
     @Bean
-    @Qualifier("writerTheseDansES")
     public ESItemWriter writerTheseDansES() {
         return new ESItemWriter();
     }

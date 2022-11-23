@@ -10,10 +10,35 @@ import org.springframework.context.annotation.Configuration;
 public class ElasticConfig {
 
     private String hostname;
-
     private int port;
-
     private String scheme;
+    private String userName;
+    private String password;
+    private String protocol;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getProtocol() {
+        return protocol;
+    }
+
+    public void setProtocol(String protocol) {
+        this.protocol = protocol;
+    }
 
     public String getHostname() {
         return hostname;
