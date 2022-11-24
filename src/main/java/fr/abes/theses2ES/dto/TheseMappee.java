@@ -37,6 +37,7 @@ public class TheseMappee {
     List<String> sujetsRameau = new ArrayList<String>();
     Map<String, String> sujets = new HashMap<String, String>();
     List<String> oaiSets = new ArrayList<String>();
+    String theseTravaux = "non";
 
     public TheseMappee(Mets mets) {
         try {
@@ -316,6 +317,12 @@ public class TheseMappee {
             log.info("traitement de oaiSets");
             oaiSets = techMD.getMdWrap().getXmlData().getThesisAdmin()
                     .getOaiSetSpec();
+
+            // theseTravaux
+
+            log.info("traitement de theseTravaux");
+            theseTravaux = techMD.getMdWrap().getXmlData().getThesisAdmin()
+                    .getTheseSurTravaux();
 
 
         } catch (Exception e) {

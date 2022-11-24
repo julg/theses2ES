@@ -76,15 +76,14 @@ public class BatchConfiguration {
         return stepBuilderFactory.get("stepIndexationThese").<TheseDTO, TheseDTO>chunk(config.getChunk())
                 .listener(theseWriteListener)
                 .reader(databaseItemReaderThreadSafe()).processor(processorThese()).listener(theseProcessListener)
-                .writer(writerTheseDansES()).build();
-                //.taskExecutor(taskExecutor()).throttleLimit(config.getThrottle()).build();
+                .writer(writerTheseDansES()).taskExecutor(taskExecutor()).throttleLimit(config.getThrottle()).build();
     }
 
     // ---------------- TASK EXECUTOR ----------------------------
-    /*@Bean
+    @Bean
     public TaskExecutor taskExecutor() {
         return new SimpleAsyncTaskExecutor("spring_batch");
-    }*/
+    }
 
     // ---------------- READER THREAD SAFE ----------------------------
     @Bean
@@ -92,8 +91,9 @@ public class BatchConfiguration {
         log.info("début du reader these thread safe...");
 
         try {
-            return new JdbcCursorItemReaderBuilder<TheseDTO>().name("theseReader").dataSource(dataSourceLecture)
-                    .sql("SELECT iddoc, nnt, doc from DOCUMENT order by iddoc asc offset 0 rows fetch next 5000 rows only").rowMapper(new TheseRowMapper()).build();
+            return new JdbcPagingItemReaderBuilder<TheseDTO>().name("theseReader").dataSource(dataSourceLecture)
+                    .queryProvider(createQueryProvider()).rowMapper(new TheseRowMapper()).pageSize(config.getChunk())
+                    .build();
 
         } catch (Exception e) {
             log.error("erreur lors de la creation du JdbcPagingItemReader : " + e);
