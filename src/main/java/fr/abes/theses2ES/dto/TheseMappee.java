@@ -48,30 +48,30 @@ public class TheseMappee {
             // nnt
 
             TechMD techMD = amdSec.getTechMD().stream().filter(d -> d.getMdWrap().getXmlData().getThesisAdmin() != null).findFirst().orElse(null);
-            
-            Iterator<Identifier> iteIdentifiers = techMD.getMdWrap().getXmlData().getThesisAdmin().getIdentifier().iterator();
-            while (iteIdentifiers.hasNext()) {
-                Identifier i = iteIdentifiers.next();
-                if (isNnt(i.getValue()))
-                    nnt = i.getValue();
+            log.info("traitement de " + nnt);
+            try {
+                Iterator<Identifier> iteIdentifiers = techMD.getMdWrap().getXmlData().getThesisAdmin().getIdentifier().iterator();
+                while (iteIdentifiers.hasNext()) {
+                    Identifier i = iteIdentifiers.next();
+                    if (isNnt(i.getValue()))
+                        nnt = i.getValue();
+                }
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour nnt " + e.toString());
             }
 
-            log.info("traitement de " + nnt);
 
             // id
             //id = dmdSec.getID();
 
-            // cas
-            log.info("traitement de cas");
-            cas = mets.getDmdSec().stream().filter(d -> d.getMdWrap().getXmlData().getStarGestion() != null).findFirst().orElse(null)
-                    .getMdWrap().getXmlData().getStarGestion().getTraitements().getScenario();
-
-
-            // codeEtab
-
-            log.info("traitement de codeEtab");
-            codeEtab = mets.getDmdSec().stream().filter(d -> d.getMdWrap().getXmlData().getStarGestion() != null).findFirst().orElse(null)
-                    .getMdWrap().getXmlData().getStarGestion().getCodeEtab();
+            // cas et codeEtab
+            log.info("traitement de cas et codeEtab");
+            Optional<DmdSec> starGestion = mets.getDmdSec().stream().filter(d -> d.getMdWrap().getXmlData().getStarGestion() != null).findFirst();
+            if (starGestion.isPresent()) {
+                cas = starGestion.get().getMdWrap().getXmlData().getStarGestion().getTraitements().getScenario();
+                codeEtab = starGestion.get().getMdWrap().getXmlData().getStarGestion().getCodeEtab();
+            }
 
             // titrePrincipal
 
@@ -115,24 +115,38 @@ public class TheseMappee {
             // date de soutenance
 
             log.info("traitement de dateSoutenance");
-            dateSoutenance = techMD.getMdWrap().getXmlData().getThesisAdmin().getDateAccepted().getValue().toString();
+            try {
+                dateSoutenance = techMD.getMdWrap().getXmlData().getThesisAdmin().getDateAccepted().getValue().toString();
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour dateSoutenance de " + nnt);
+            }
 
             // date de fin d'embargo
 
             log.info("traitement de datefinembargo ");
-            if (!mets.getDmdSec().stream().filter(d -> d.getMdWrap().getXmlData().getStarGestion() != null).findFirst().orElse(null)
-                    .getMdWrap().getXmlData().getStarGestion().getTraitements().getSorties().getDiffusion().getRestrictionTemporelleFin().isEmpty())
-                dateFinEmbargo = mets.getDmdSec().stream().filter(d -> d.getMdWrap().getXmlData().getStarGestion() != null).findFirst().orElse(null)
-                    .getMdWrap().getXmlData().getStarGestion().getTraitements().getSorties().getDiffusion().getRestrictionTemporelleFin();
-
+            try {
+                if (!mets.getDmdSec().stream().filter(d -> d.getMdWrap().getXmlData().getStarGestion() != null).findFirst().orElse(null)
+                        .getMdWrap().getXmlData().getStarGestion().getTraitements().getSorties().getDiffusion().getRestrictionTemporelleFin().isEmpty())
+                    dateFinEmbargo = mets.getDmdSec().stream().filter(d -> d.getMdWrap().getXmlData().getStarGestion() != null).findFirst().orElse(null)
+                            .getMdWrap().getXmlData().getStarGestion().getTraitements().getSorties().getDiffusion().getRestrictionTemporelleFin();
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour date fin embargo de " + nnt + "," + e.getMessage());
+            }
             // accessible
 
             log.info("traitement de accessible");
             accessible = "non";
 
-            if ((cas.equals("cas1") || cas.equals("cas2") || cas.equals("cas3") || cas.equals("cas4"))
-            && (dateFinEmbargo == null || dateFinEmbargo.isEmpty() || LocalDate.parse(dateFinEmbargo).isBefore(LocalDate.now()))) {
-                accessible = "oui";
+            try {
+                if ((cas.equals("cas1") || cas.equals("cas2") || cas.equals("cas3") || cas.equals("cas4"))
+                        && (dateFinEmbargo == null || dateFinEmbargo.isEmpty() || LocalDate.parse(dateFinEmbargo).isBefore(LocalDate.now()))) {
+                    accessible = "oui";
+                }
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour accessible de " + nnt);
             }
 
             // status
@@ -161,170 +175,238 @@ public class TheseMappee {
             // etablissements
 
             log.info("traitement de etablissements");
-            List<ThesisDegreeGrantor> grantors = techMD.getMdWrap().getXmlData().getThesisAdmin()
-                    .getThesisDegree().getThesisDegreeGrantor();
-            Iterator<ThesisDegreeGrantor> iteGrantor = grantors.iterator();
-            // l'étab de soutenance est le premier de la liste
-            ThesisDegreeGrantor premier = iteGrantor.next();
-            if (premier.getAutoriteExterne() != null)
-                etabSoutenance.setPpn(premier.getAutoriteExterne().getValue());
-            etabSoutenance.setNom(premier.getNom());
-            // les potentiels suivants sont les cotutelles
-            while (iteGrantor.hasNext()) {
-                ThesisDegreeGrantor a = iteGrantor.next();
-                OrganismeDTO ctdto = new OrganismeDTO();
-                if (a.getAutoriteExterne() != null)
-                    ctdto.setPpn(a.getAutoriteExterne().getValue());
-                ctdto.setNom(a.getNom());
-                etabsCotutelle.add(ctdto);
+
+            try {
+                List<ThesisDegreeGrantor> grantors = techMD.getMdWrap().getXmlData().getThesisAdmin()
+                        .getThesisDegree().getThesisDegreeGrantor();
+                Iterator<ThesisDegreeGrantor> iteGrantor = grantors.iterator();
+                // l'étab de soutenance est le premier de la liste
+                ThesisDegreeGrantor premier = iteGrantor.next();
+                if (premier.getAutoriteExterne() != null)
+                    etabSoutenance.setPpn(premier.getAutoriteExterne().getValue());
+                etabSoutenance.setNom(premier.getNom());
+                // les potentiels suivants sont les cotutelles
+                while (iteGrantor.hasNext()) {
+                    ThesisDegreeGrantor a = iteGrantor.next();
+                    OrganismeDTO ctdto = new OrganismeDTO();
+                    if (a.getAutoriteExterne() != null)
+                        ctdto.setPpn(a.getAutoriteExterne().getValue());
+                    ctdto.setNom(a.getNom());
+                    etabsCotutelle.add(ctdto);
+                }
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour etablissements de " + nnt + "," + e.getMessage());
             }
 
             // partenaires
 
             log.info("traitement de partenaires");
-            List<PartenaireRecherche> partenairesDepuisTef = techMD.getMdWrap().getXmlData().getThesisAdmin()
-                    .getPartenaireRecherche();
-            Iterator<PartenaireRecherche> partenairesIterator = partenairesDepuisTef.iterator();
-            while (partenairesIterator.hasNext()) {
-                PartenaireRecherche p = partenairesIterator.next();
-                OrganismeDTO pdto = new OrganismeDTO();
-                if (p.getAutoriteExterne() != null)
-                    pdto.setPpn(p.getAutoriteExterne().getValue());
-                pdto.setNom(p.getNom());
-                partenairesRecherche.add(pdto);
+            try {
+                List<PartenaireRecherche> partenairesDepuisTef = techMD.getMdWrap().getXmlData().getThesisAdmin()
+                        .getPartenaireRecherche();
+                Iterator<PartenaireRecherche> partenairesIterator = partenairesDepuisTef.iterator();
+                while (partenairesIterator.hasNext()) {
+                    PartenaireRecherche p = partenairesIterator.next();
+                    OrganismeDTO pdto = new OrganismeDTO();
+                    if (p.getAutoriteExterne() != null)
+                        pdto.setPpn(p.getAutoriteExterne().getValue());
+                    pdto.setNom(p.getNom());
+                    partenairesRecherche.add(pdto);
+                }
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour partenaire  " + nnt + "," + e.getMessage());
+
             }
 
             // ecoles doctorales
 
             log.info("traitement de ecolesDoctorales");
-            List<EcoleDoctorale> ecolesDoctoralesDepuisTef = techMD.getMdWrap().getXmlData().getThesisAdmin()
-                    .getEcoleDoctorale();
-            Iterator<EcoleDoctorale> ecoleDoctoraleIterator = ecolesDoctoralesDepuisTef.iterator();
-            while (ecoleDoctoraleIterator.hasNext()) {
-                EcoleDoctorale ecole = ecoleDoctoraleIterator.next();
-                OrganismeDTO edto = new OrganismeDTO();
-                if (ecole.getAutoriteExterne() != null)
-                    edto.setPpn(ecole.getAutoriteExterne().getValue());
-                edto.setNom(ecole.getNom());
-                ecolesDoctorales.add(edto);
+            try {
+                List<EcoleDoctorale> ecolesDoctoralesDepuisTef = techMD.getMdWrap().getXmlData().getThesisAdmin()
+                        .getEcoleDoctorale();
+                Iterator<EcoleDoctorale> ecoleDoctoraleIterator = ecolesDoctoralesDepuisTef.iterator();
+                while (ecoleDoctoraleIterator.hasNext()) {
+                    EcoleDoctorale ecole = ecoleDoctoraleIterator.next();
+                    OrganismeDTO edto = new OrganismeDTO();
+                    if (ecole.getAutoriteExterne() != null)
+                        edto.setPpn(ecole.getAutoriteExterne().getValue());
+                    edto.setNom(ecole.getNom());
+                    ecolesDoctorales.add(edto);
+                }
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour ecolesDoctorales de " + nnt + "," + e.getMessage());
+
             }
 
             // discipline
 
             log.info("traitement de discipline");
-            ThesisDegreeDiscipline tddisc = techMD.getMdWrap().getXmlData().getThesisAdmin()
-                    .getThesisDegree().getThesisDegreeDiscipline();
-            discipline = tddisc.getValue();
+            try {
+                ThesisDegreeDiscipline tddisc = techMD.getMdWrap().getXmlData().getThesisAdmin()
+                        .getThesisDegree().getThesisDegreeDiscipline();
+                discipline = tddisc.getValue();
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour discipline de " + nnt + "," + e.getMessage());
+
+            }
 
             // auteurs
 
             log.info("traitement de auteurs");
-            List<Auteur> auteursDepuisTef = techMD.getMdWrap().getXmlData().getThesisAdmin()
-                    .getAuteur();
-            Iterator<Auteur> auteurIterator = auteursDepuisTef.iterator();
-            while (auteurIterator.hasNext()) {
-                Auteur a = auteurIterator.next();
-                PersonneDTO adto = new PersonneDTO();
-                if (a.getAutoriteExterne() != null)
-                    adto.setPpn(a.getAutoriteExterne().getValue());
-                adto.setNom(a.getNom());
-                adto.setPrenom(a.getPrenom());
-                auteurs.add(adto);
+            try {
+                List<Auteur> auteursDepuisTef = techMD.getMdWrap().getXmlData().getThesisAdmin()
+                        .getAuteur();
+                Iterator<Auteur> auteurIterator = auteursDepuisTef.iterator();
+                while (auteurIterator.hasNext()) {
+                    Auteur a = auteurIterator.next();
+                    PersonneDTO adto = new PersonneDTO();
+                    if (a.getAutoriteExterne() != null)
+                        adto.setPpn(a.getAutoriteExterne().getValue());
+                    adto.setNom(a.getNom());
+                    adto.setPrenom(a.getPrenom());
+                    auteurs.add(adto);
+                }
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour auteurs de " + nnt + "," + e.getMessage());
             }
 
             // directeurs
             log.info("traitement de directeurs");
-            List<DirecteurThese> directeursDepuisTef = techMD.getMdWrap().getXmlData().getThesisAdmin()
-                    .getDirecteurThese();
-            Iterator<DirecteurThese> directeurTheseIterator = directeursDepuisTef.iterator();
-            while (directeurTheseIterator.hasNext()) {
-                DirecteurThese dt = directeurTheseIterator.next();
-                PersonneDTO dtdto = new PersonneDTO();
-                if (dt.getAutoriteExterne() != null)
-                    dtdto.setPpn(dt.getAutoriteExterne().getValue());
-                dtdto.setNom(dt.getNom());
-                dtdto.setPrenom(dt.getPrenom());
-                directeurs.add(dtdto);
+            try {
+                List<DirecteurThese> directeursDepuisTef = techMD.getMdWrap().getXmlData().getThesisAdmin()
+                        .getDirecteurThese();
+                Iterator<DirecteurThese> directeurTheseIterator = directeursDepuisTef.iterator();
+                while (directeurTheseIterator.hasNext()) {
+                    DirecteurThese dt = directeurTheseIterator.next();
+                    PersonneDTO dtdto = new PersonneDTO();
+                    if (dt.getAutoriteExterne() != null)
+                        dtdto.setPpn(dt.getAutoriteExterne().getValue());
+                    dtdto.setNom(dt.getNom());
+                    dtdto.setPrenom(dt.getPrenom());
+                    directeurs.add(dtdto);
+                }
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour directeurs de " + nnt + "," + e.getMessage());
             }
 
             // presidentJury
 
             log.info("traitement de president jury");
-            if (techMD.getMdWrap().getXmlData().getThesisAdmin().getPresidentJury() != null) {
-                PresidentJury presidentDepuisTef = techMD.getMdWrap().getXmlData().getThesisAdmin().getPresidentJury();
-                if (presidentDepuisTef.getAutoriteExterne() != null)
-                    presidentJury.setPpn(presidentDepuisTef.getAutoriteExterne().getValue());
-                presidentJury.setNom(presidentDepuisTef.getNom());
-                presidentJury.setPrenom(presidentDepuisTef.getPrenom());
+            try {
+                if (techMD.getMdWrap().getXmlData().getThesisAdmin().getPresidentJury() != null) {
+                    PresidentJury presidentDepuisTef = techMD.getMdWrap().getXmlData().getThesisAdmin().getPresidentJury();
+                    if (presidentDepuisTef.getAutoriteExterne() != null)
+                        presidentJury.setPpn(presidentDepuisTef.getAutoriteExterne().getValue());
+                    presidentJury.setNom(presidentDepuisTef.getNom());
+                    presidentJury.setPrenom(presidentDepuisTef.getPrenom());
+                }
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour president jury de " + nnt + "," + e.getMessage());
             }
 
             // membres Jury
 
             log.info("traitement de membres jury");
-            List<MembreJury> membresDepuisTef = techMD.getMdWrap().getXmlData().getThesisAdmin()
-                    .getMembreJury();
-            Iterator<MembreJury> membresIterator = membresDepuisTef.iterator();
-            while (membresIterator.hasNext()) {
-                MembreJury m = membresIterator.next();
-                PersonneDTO mdto = new PersonneDTO();
-                if (m.getAutoriteExterne() != null)
-                    mdto.setPpn(m.getAutoriteExterne().getValue());
-                mdto.setNom(m.getNom());
-                mdto.setPrenom(m.getPrenom());
-                membresJury.add(mdto);
+            try {
+                List<MembreJury> membresDepuisTef = techMD.getMdWrap().getXmlData().getThesisAdmin()
+                        .getMembreJury();
+                Iterator<MembreJury> membresIterator = membresDepuisTef.iterator();
+                while (membresIterator.hasNext()) {
+                    MembreJury m = membresIterator.next();
+                    PersonneDTO mdto = new PersonneDTO();
+                    if (m.getAutoriteExterne() != null)
+                        mdto.setPpn(m.getAutoriteExterne().getValue());
+                    mdto.setNom(m.getNom());
+                    mdto.setPrenom(m.getPrenom());
+                    membresJury.add(mdto);
+                }
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour membres jury de " + nnt + "," + e.getMessage());
             }
 
             // rapporteurs
 
             log.info("traitement de rapporteurs");
-            List<Rapporteur> rapporteursDepuisTef = techMD.getMdWrap().getXmlData().getThesisAdmin()
-                    .getRapporteur();
-            Iterator<Rapporteur> rapporteurIterator = rapporteursDepuisTef.iterator();
-            while (rapporteurIterator.hasNext()) {
-                Rapporteur r = rapporteurIterator.next();
-                PersonneDTO rdto = new PersonneDTO();
-                if (r.getAutoriteExterne() != null)
-                    rdto.setPpn(r.getAutoriteExterne().getValue());
-                rdto.setNom(r.getNom());
-                rdto.setPrenom(r.getPrenom());
-                rapporteurs.add(rdto);
+            try {
+                List<Rapporteur> rapporteursDepuisTef = techMD.getMdWrap().getXmlData().getThesisAdmin()
+                        .getRapporteur();
+                Iterator<Rapporteur> rapporteurIterator = rapporteursDepuisTef.iterator();
+                while (rapporteurIterator.hasNext()) {
+                    Rapporteur r = rapporteurIterator.next();
+                    PersonneDTO rdto = new PersonneDTO();
+                    if (r.getAutoriteExterne() != null)
+                        rdto.setPpn(r.getAutoriteExterne().getValue());
+                    rdto.setNom(r.getNom());
+                    rdto.setPrenom(r.getPrenom());
+                    rapporteurs.add(rdto);
+                }
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour rapporteurs de " + nnt + "," + e.getMessage());
             }
 
             // sujets
 
             log.info("traitement de sujets");
-            List<Subject> subjects = dmdSec.getMdWrap().getXmlData().getThesisRecord().getSubject();
-            Iterator<Subject> subjectIterator = subjects.iterator();
-            while (subjectIterator.hasNext()) {
-                Subject s = subjectIterator.next();
-                sujets.put(s.getLang(), s.getContent());
+            try {
+                List<Subject> subjects = dmdSec.getMdWrap().getXmlData().getThesisRecord().getSubject();
+                Iterator<Subject> subjectIterator = subjects.iterator();
+                while (subjectIterator.hasNext()) {
+                    Subject s = subjectIterator.next();
+                    sujets.put(s.getLang(), s.getContent());
+                }
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour sujets de " + nnt + "," + e.getMessage());
             }
 
             // sujetsRameau
 
             log.info("traitement de sujetsRameau");
-            List<VedetteRameauNomCommun> sujetsRameauDepuisTef = dmdSec.getMdWrap().getXmlData()
-                    .getThesisRecord().getSujetRameau().getVedetteRameauNomCommun();
-            Iterator<VedetteRameauNomCommun> vedetteRameauNomCommunIterator = sujetsRameauDepuisTef.iterator();
-            while (vedetteRameauNomCommunIterator.hasNext()) {
-                VedetteRameauNomCommun vdto = vedetteRameauNomCommunIterator.next();
-                if (vdto.getElementdEntree() != null)
-                    sujetsRameau.add(vdto.getElementdEntree().getContent());
+
+            try {
+                List<VedetteRameauNomCommun> sujetsRameauDepuisTef = dmdSec.getMdWrap().getXmlData()
+                        .getThesisRecord().getSujetRameau().getVedetteRameauNomCommun();
+                Iterator<VedetteRameauNomCommun> vedetteRameauNomCommunIterator = sujetsRameauDepuisTef.iterator();
+                while (vedetteRameauNomCommunIterator.hasNext()) {
+                    VedetteRameauNomCommun vdto = vedetteRameauNomCommunIterator.next();
+                    if (vdto.getElementdEntree() != null)
+                        sujetsRameau.add(vdto.getElementdEntree().getContent());
+                }
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour sujetsRameau de " + nnt + ", " + e.getMessage());
             }
 
             // oaiSets
 
             log.info("traitement de oaiSets");
-            oaiSets = techMD.getMdWrap().getXmlData().getThesisAdmin()
-                    .getOaiSetSpec();
+            try {
+                oaiSets = techMD.getMdWrap().getXmlData().getThesisAdmin()
+                        .getOaiSetSpec();
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour oaisets de " + nnt + "," + e.getMessage());
+            }
 
             // theseTravaux
 
             log.info("traitement de theseTravaux");
-            theseTravaux = techMD.getMdWrap().getXmlData().getThesisAdmin()
-                    .getTheseSurTravaux();
-
-
+            try {
+                theseTravaux = techMD.getMdWrap().getXmlData().getThesisAdmin()
+                        .getTheseSurTravaux();
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour thesesTravaux de " + nnt + "," + e.getMessage());
+            }
         } catch (Exception e) {
             log.error("erreur lors du mappage = " + e.getMessage());
             log.error(Arrays.toString(e.getStackTrace()));

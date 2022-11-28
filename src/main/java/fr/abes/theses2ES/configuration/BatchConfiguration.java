@@ -107,7 +107,7 @@ public class BatchConfiguration {
         queryProvider.setFromClause("from DOCUMENT");
         if (config.getWhereLimite() > 0) {
 
-            //queryProvider.setWhereClause("where nnt = '2007NAN21015'");
+            //queryProvider.setWhereClause("where nnt = '1993BOR23095'");
             queryProvider.setWhereClause("where rownum < " + config.getWhereLimite());
             Map<String,Order> orderKeys = new HashMap<>();
             orderKeys.put("iddoc", Order.ASCENDING);
