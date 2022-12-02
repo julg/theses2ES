@@ -45,11 +45,14 @@ public class TheseMappee {
             DmdSec dmdSec = mets.getDmdSec().get(1);
             AmdSec amdSec = mets.getAmdSec();
 
+            TechMD techMD = null;
             // nnt
 
-            TechMD techMD = amdSec.getTechMD().stream().filter(d -> d.getMdWrap().getXmlData().getThesisAdmin() != null).findFirst().orElse(null);
-            log.info("traitement de " + nnt);
             try {
+
+            techMD = amdSec.getTechMD().stream().filter(d -> d.getMdWrap().getXmlData().getThesisAdmin() != null).findFirst().orElse(null);
+            log.info("traitement de " + nnt);
+
                 Iterator<Identifier> iteIdentifiers = techMD.getMdWrap().getXmlData().getThesisAdmin().getIdentifier().iterator();
                 while (iteIdentifiers.hasNext()) {
                     Identifier i = iteIdentifiers.next();
@@ -67,50 +70,74 @@ public class TheseMappee {
 
             // cas et codeEtab
             log.info("traitement de cas et codeEtab");
-            Optional<DmdSec> starGestion = mets.getDmdSec().stream().filter(d -> d.getMdWrap().getXmlData().getStarGestion() != null).findFirst();
-            if (starGestion.isPresent()) {
-                cas = starGestion.get().getMdWrap().getXmlData().getStarGestion().getTraitements().getScenario();
-                codeEtab = starGestion.get().getMdWrap().getXmlData().getStarGestion().getCodeEtab();
+            try {
+                Optional<DmdSec> starGestion = mets.getDmdSec().stream().filter(d -> d.getMdWrap().getXmlData().getStarGestion() != null).findFirst();
+                if (starGestion.isPresent()) {
+                    cas = starGestion.get().getMdWrap().getXmlData().getStarGestion().getTraitements().getScenario();
+                    codeEtab = starGestion.get().getMdWrap().getXmlData().getStarGestion().getCodeEtab();
+                }
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour cas de " + nnt + e.getMessage());
             }
 
             // titrePrincipal
 
             log.info("traitement de titrePrincipal");
-            titrePrincipal = dmdSec.getMdWrap().getXmlData().getThesisRecord().getTitle().getContent();
-
+            try {
+                titrePrincipal = dmdSec.getMdWrap().getXmlData().getThesisRecord().getTitle().getContent();
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour titrePrincipal de " + nnt + e.getMessage());
+            }
             // titres
             log.info("traitement de titres");
-            titres.put(
-                    dmdSec.getMdWrap().getXmlData().getThesisRecord().getTitle().getLang(),
-                    dmdSec.getMdWrap().getXmlData().getThesisRecord().getTitle().getContent());
+            try {
+                titres.put(
+                        dmdSec.getMdWrap().getXmlData().getThesisRecord().getTitle().getLang(),
+                        dmdSec.getMdWrap().getXmlData().getThesisRecord().getTitle().getContent());
 
-            if (dmdSec.getMdWrap().getXmlData().getThesisRecord().getAlternative() != null) {
-                Iterator<Alternative> titreAlternativeIterator = dmdSec.getMdWrap().getXmlData().getThesisRecord().getAlternative().iterator();
-                while(titreAlternativeIterator.hasNext()) {
-                    Alternative a = titreAlternativeIterator.next();
-                    titres.put(
-                            a.getLang(), a.getContent());
+                if (dmdSec.getMdWrap().getXmlData().getThesisRecord().getAlternative() != null) {
+                    Iterator<Alternative> titreAlternativeIterator = dmdSec.getMdWrap().getXmlData().getThesisRecord().getAlternative().iterator();
+                    while (titreAlternativeIterator.hasNext()) {
+                        Alternative a = titreAlternativeIterator.next();
+                        titres.put(
+                                a.getLang(), a.getContent());
+                    }
                 }
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour titres de " + nnt + e.getMessage());
             }
 
             // resumes
             log.info("traitement de resumes");
-            List<Abstract> abstracts = dmdSec.getMdWrap().getXmlData().getThesisRecord().getAbstract();
-            Iterator<Abstract> abstractIterator = abstracts.iterator();
-            while (abstractIterator.hasNext()) {
-                Abstract a = abstractIterator.next();
-                resumes.put(a.getLang(), a.getContent());
+            try {
+                List<Abstract> abstracts = dmdSec.getMdWrap().getXmlData().getThesisRecord().getAbstract();
+                Iterator<Abstract> abstractIterator = abstracts.iterator();
+                while (abstractIterator.hasNext()) {
+                    Abstract a = abstractIterator.next();
+                    resumes.put(a.getLang(), a.getContent());
+                }
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour resumes de " + nnt + e.getMessage());
             }
 
             // langues
 
             log.info("traitement de langues");
-            List<Language> languages = dmdSec.getMdWrap().getXmlData().getThesisRecord().getLanguage();
-            Iterator<Language> languageIterator = languages.iterator();
-            while (languageIterator.hasNext()) {
-                Language l = languageIterator.next();
-                langues.add(l.getValue());
+            try {
+                List<Language> languages = dmdSec.getMdWrap().getXmlData().getThesisRecord().getLanguage();
+                Iterator<Language> languageIterator = languages.iterator();
+                while (languageIterator.hasNext()) {
+                    Language l = languageIterator.next();
+                    langues.add(l.getValue());
+                }
             }
+            catch (NullPointerException e) {
+                    log.error("PB pour langue de " + nnt + e.getMessage());
+                }
 
             // date de soutenance
 
@@ -152,11 +179,16 @@ public class TheseMappee {
             // status
 
             log.info("traitement de status");
-            status = "soutenue";
-            Optional<DmdSec> stepGestion = mets.getDmdSec().stream().filter(d -> d.getMdWrap().getXmlData().getStepGestion() != null).findFirst();
-            if (stepGestion.isPresent())
-                status = "enCours";
 
+            status = "soutenue";
+            try {
+                Optional<DmdSec> stepGestion = mets.getDmdSec().stream().filter(d -> d.getMdWrap().getXmlData().getStepGestion() != null).findFirst();
+                if (stepGestion.isPresent())
+                    status = "enCours";
+            }
+            catch (NullPointerException e) {
+                log.error("PB pour status de " + nnt + e.getMessage());
+            }
 
             // source
             log.info("traitement de source");
