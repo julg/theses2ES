@@ -244,6 +244,7 @@ public class TheseMappee {
                     if (p.getAutoriteExterne() != null)
                         pdto.setPpn(p.getAutoriteExterne().getValue());
                     pdto.setNom(p.getNom());
+                    pdto.setType(p.getType());
                     partenairesRecherche.add(pdto);
                 }
             }

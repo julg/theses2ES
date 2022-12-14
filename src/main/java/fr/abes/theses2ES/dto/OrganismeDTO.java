@@ -4,7 +4,7 @@ public class OrganismeDTO {
 
     private String ppn;
     private String nom;
-
+    private String type;
     public String getPpn() {
         return ppn;
     }
@@ -21,5 +21,11 @@ public class OrganismeDTO {
         this.nom = nom;
     }
 
+    public String getType() {
+        return type;
+    }
 
+    public void setType(String type) {
+        this.type = type;
+    }
 }
