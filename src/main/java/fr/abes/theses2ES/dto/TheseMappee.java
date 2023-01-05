@@ -25,15 +25,27 @@ public class TheseMappee {
     Map<String, String> resumes = new HashMap<String, String>();
     List<String> langues = new ArrayList<String>();
     OrganismeDTO etabSoutenance = new OrganismeDTO();
+    String etabSoutenanceN;
     List<OrganismeDTO> etabsCotutelle = new ArrayList<OrganismeDTO>();
+    List<String> etabsCotutelleN = new ArrayList<String>();
     List<OrganismeDTO> ecolesDoctorales = new ArrayList<OrganismeDTO>();
+    List<String> ecolesDoctoralesN = new ArrayList<String>();
     List<OrganismeDTO> partenairesRecherche = new ArrayList<OrganismeDTO>();
-    List<PersonneDTO> rapporteurs = new ArrayList<PersonneDTO>();
+    List<String> partenairesRechercheN = new ArrayList<String>();
+
+
+
     String discipline;
     List<PersonneDTO> auteurs = new ArrayList<PersonneDTO>();
+    List<String> auteursNP = new ArrayList<String>();
     List<PersonneDTO> directeurs = new ArrayList<PersonneDTO>();
+    List<String> directeursNP = new ArrayList<String>();
     PersonneDTO presidentJury = new PersonneDTO();
+    String presidentJuryNP;
     List<PersonneDTO> membresJury = new ArrayList<PersonneDTO>();
+    List<String> membresJuryNP = new ArrayList<String>();
+    List<PersonneDTO> rapporteurs = new ArrayList<PersonneDTO>();
+    List<String> rapporteursNP = new ArrayList<String>();
     List<String> sujetsRameau = new ArrayList<String>();
     Map<String, String> sujets = new HashMap<String, String>();
     List<String> oaiSets = new ArrayList<String>();
@@ -217,6 +229,7 @@ public class TheseMappee {
                 if (premier.getAutoriteExterne() != null)
                     etabSoutenance.setPpn(premier.getAutoriteExterne().getValue());
                 etabSoutenance.setNom(premier.getNom());
+                etabSoutenanceN = premier.getNom();
                 // les potentiels suivants sont les cotutelles
                 while (iteGrantor.hasNext()) {
                     ThesisDegreeGrantor a = iteGrantor.next();
@@ -225,6 +238,7 @@ public class TheseMappee {
                         ctdto.setPpn(a.getAutoriteExterne().getValue());
                     ctdto.setNom(a.getNom());
                     etabsCotutelle.add(ctdto);
+                    etabsCotutelleN.add(a.getNom());
                 }
             }
             catch (NullPointerException e) {
@@ -246,6 +260,7 @@ public class TheseMappee {
                     pdto.setNom(p.getNom());
                     pdto.setType(p.getType());
                     partenairesRecherche.add(pdto);
+                    partenairesRechercheN.add(p.getNom());
                 }
             }
             catch (NullPointerException e) {
@@ -267,6 +282,7 @@ public class TheseMappee {
                         edto.setPpn(ecole.getAutoriteExterne().getValue());
                     edto.setNom(ecole.getNom());
                     ecolesDoctorales.add(edto);
+                    ecolesDoctoralesN.add(ecole.getNom());
                 }
             }
             catch (NullPointerException e) {
@@ -302,6 +318,7 @@ public class TheseMappee {
                     adto.setNom(a.getNom());
                     adto.setPrenom(a.getPrenom());
                     auteurs.add(adto);
+                    auteursNP.add(a.getNom() + " " + a.getPrenom());
                 }
             }
             catch (NullPointerException e) {
@@ -322,6 +339,7 @@ public class TheseMappee {
                     dtdto.setNom(dt.getNom());
                     dtdto.setPrenom(dt.getPrenom());
                     directeurs.add(dtdto);
+                    directeursNP.add(dt.getNom() + " " +dt.getPrenom());
                 }
             }
             catch (NullPointerException e) {
@@ -338,6 +356,7 @@ public class TheseMappee {
                         presidentJury.setPpn(presidentDepuisTef.getAutoriteExterne().getValue());
                     presidentJury.setNom(presidentDepuisTef.getNom());
                     presidentJury.setPrenom(presidentDepuisTef.getPrenom());
+                    presidentJuryNP = presidentDepuisTef.getNom() + " " + presidentDepuisTef.getPrenom();
                 }
             }
             catch (NullPointerException e) {
@@ -359,6 +378,7 @@ public class TheseMappee {
                     mdto.setNom(m.getNom());
                     mdto.setPrenom(m.getPrenom());
                     membresJury.add(mdto);
+                    membresJuryNP.add(m.getNom() + " " +m.getPrenom());
                 }
             }
             catch (NullPointerException e) {
@@ -380,6 +400,7 @@ public class TheseMappee {
                     rdto.setNom(r.getNom());
                     rdto.setPrenom(r.getPrenom());
                     rapporteurs.add(rdto);
+                    rapporteursNP.add(r.getNom() + " " +r.getPrenom());
                 }
             }
             catch (NullPointerException e) {
