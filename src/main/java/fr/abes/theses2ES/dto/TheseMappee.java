@@ -47,7 +47,8 @@ public class TheseMappee {
     List<PersonneDTO> rapporteurs = new ArrayList<PersonneDTO>();
     List<String> rapporteursNP = new ArrayList<String>();
     List<String> sujetsRameau = new ArrayList<String>();
-    Map<String, String> sujets = new HashMap<String, String>();
+    List<String> sujetsFR = new ArrayList<>();
+    List<String> sujetsEN = new ArrayList<>();
     List<String> oaiSets = new ArrayList<String>();
     String theseTravaux = "non";
 
@@ -415,7 +416,12 @@ public class TheseMappee {
                 Iterator<Subject> subjectIterator = subjects.iterator();
                 while (subjectIterator.hasNext()) {
                     Subject s = subjectIterator.next();
-                    sujets.put(s.getLang(), s.getContent());
+                    switch (s.getLang()) {
+                        case "fr" : sujetsFR.add(s.getContent());
+                        break;
+                        case "en" : sujetsEN.add(s.getContent());
+                        break;
+                    }
                 }
             }
             catch (NullPointerException e) {
@@ -616,12 +622,20 @@ public class TheseMappee {
         this.ecolesDoctorales = ecolesDoctorales;
     }
 
-    public Map<String, String> getSujets() {
-        return sujets;
+    public List<String> getSujetsFR() {
+        return sujetsFR;
     }
 
-    public void setSujets(Map<String, String> sujets) {
-        this.sujets = sujets;
+    public void setSujetsFR(List<String> sujetsFR) {
+        this.sujetsFR = sujetsFR;
+    }
+
+    public List<String> getSujetsEN() {
+        return sujetsEN;
+    }
+
+    public void setSujetsEN(List<String> sujetsEN) {
+        this.sujetsEN = sujetsEN;
     }
 
     public String getCodeEtab() {

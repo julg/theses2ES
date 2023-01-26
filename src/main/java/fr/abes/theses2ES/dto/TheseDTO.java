@@ -6,6 +6,7 @@ public class TheseDTO {
     private String nnt;
     private String doc;
     private String json;
+    private String idSujet;
 
     public int getIdDoc() {
         return idDoc;
@@ -37,6 +38,14 @@ public class TheseDTO {
 
     public void setJson(String json) {
         this.json = json;
+    }
+
+    public String getIdSujet() {
+        return idSujet;
+    }
+
+    public void setIdSujet(String idSujet) {
+        this.idSujet = idSujet;
     }
 
 }

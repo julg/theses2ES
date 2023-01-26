@@ -21,6 +21,7 @@ public class TheseRowMapper implements RowMapper<TheseDTO> {
             these.setIdDoc(rsOra.getInt("iddoc"));
             log.info("dans TheseRowMapper, l'iddoc est : " + these.getIdDoc());
             these.setNnt(rsOra.getString("nnt"));
+            these.setIdSujet(rsOra.getString("numsujet"));
             these.setDoc(XMLType.createXML(rsOra.getOPAQUE("doc")).getStringVal());
 
             return these;

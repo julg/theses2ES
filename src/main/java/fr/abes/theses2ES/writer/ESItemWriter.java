@@ -25,10 +25,11 @@ public class ESItemWriter implements ItemWriter<TheseDTO> {
         for (TheseDTO theseDTO : items) {
             JsonData json = readJson(new ByteArrayInputStream(theseDTO.getJson().getBytes()), ElasticClient.getElasticsearchClient());
 
+            this.ecrireDansFichier(theseDTO.getJson(), theseDTO.getNnt());
             br.operations(op -> op
                     .index(idx -> idx
                             .index("theses-sample-2")
-                            .id(theseDTO.getNnt())
+                            .id(theseDTO.getNnt() == null? theseDTO.getIdSujet() : theseDTO.getNnt())
                             .document(json)
                     )
             );
